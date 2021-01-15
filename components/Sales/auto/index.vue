@@ -5,8 +5,16 @@
     <article
       class="placa flex items-center justify-around border border-2-black relative"
     >
-      <input type="text" placeholder="AAA" />
-      <input type="text" placeholder="000" />
+      <input
+        v-model="letras"
+        maxlength="3"
+        type="text"
+        onkeyup="if
+      (this.value.length == this.getAttribute('maxlength')) inputNum.focus()"
+        placeholder="AAA"
+        @change="completarLetras(letras)"
+      />
+      <input maxlength="3" type="text" placeholder="000" id="inputNum" />
       <div class="tornillo1"></div>
       <div class="tornillo2"></div>
       <div class="tornillo3"></div>
@@ -24,6 +32,19 @@
 <script>
 export default {
   name: 'Auto',
+  data() {
+    return {
+      numeros: '',
+      letras: '',
+    }
+  },
+  methods: {
+    completarLetras(param) {
+      if (param.length === 3) {
+        console.log('Hasta aqui')
+      }
+    },
+  },
 }
 </script>
 
@@ -47,6 +68,7 @@ input {
   font-size: 50px;
   font-weight: 600;
   outline: none;
+  text-transform: uppercase;
 }
 ::placeholder {
   font-size: 50px;
@@ -106,5 +128,6 @@ input {
   box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.5);
   border-radius: 100%;
   position: absolute;
+  left: 102px;
 }
 </style>

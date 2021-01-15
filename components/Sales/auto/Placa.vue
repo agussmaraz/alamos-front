@@ -6,7 +6,7 @@
       class="placa flex items-center justify-around border border-2-black relative"
     >
       <input type="text" placeholder="AAA" />
-      <input type="text" placeholder="000" />
+      <input v-model="numeros" type="text" placeholder="000" />
       <div class="tornillo1"></div>
       <div class="tornillo2"></div>
       <div class="tornillo3"></div>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'Auto',
+  name: 'Placa',
 }
 </script>
 

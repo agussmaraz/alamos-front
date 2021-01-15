@@ -1,220 +1,97 @@
 <template>
   <section>
     <article class="overflow-y-auto py-48">
-      <div class="checkbox div-checkout px-3">
+      <div
+        v-for="(item, index) in filterName"
+        :key="index"
+        class="checkbox div-checkout px-3"
+      >
         <input
-          id="acondicionado"
-          v-model="models.acondicionado"
+          :id="item.model"
+          v-model="item.status"
           type="checkbox"
-          name="acondicionado"
+          :name="item.model"
           class="input-div. w-4 h-5 md:h-6"
-          @change="change"
+          @change="change(item)"
         />
-        <label for="acondicionado" class="pl-1">Aire acondicionado</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="bluethoot"
-          v-model="models.bluethoot"
-          type="checkbox"
-          name="bluethoot"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="bluethoot" class="pl-1">Bluethoot</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="climatizador"
-          v-model="models.climatizador"
-          type="checkbox"
-          name="climatizador"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="climatizador" class="pl-1">Climatizador</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="dvd"
-          v-model="models.dvd"
-          type="checkbox"
-          name="dvd"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="dvd" class="pl-1">DVD</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="gps"
-          v-model="models.gps"
-          type="checkbox"
-          name="gps"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="gps" class="pl-1">GPS</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="luces"
-          v-model="models.luces"
-          type="checkbox"
-          name="luces"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="luces" class="pl-1">Luces</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="radio"
-          v-model="models.radio"
-          type="checkbox"
-          name="radio"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="radio" class="pl-1">Radio</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="reproductor"
-          v-model="models.reproductor"
-          type="checkbox"
-          name="reproductor"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="reproductor" class="pl-1">Reproductor MP3</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="retrovisores"
-          v-model="models.retrovisores"
-          type="checkbox"
-          name="retrovisores"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="retrovisores" class="pl-1">Retrovisores Electricos</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="lluvia"
-          v-model="models.lluvia"
-          type="checkbox"
-          name="lluvia"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="lluvia" class="pl-1">Sensor lluvia</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="parqueo"
-          v-model="models.parqueo"
-          type="checkbox"
-          name="parqueo"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="parqueo" class="pl-1">Sensor parqueo</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="sillas"
-          v-model="models.sillas"
-          type="checkbox"
-          name="sillas"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="sillas" class="pl-1">Sillas eléctricas</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="sunroof"
-          v-model="models.sunroof"
-          type="checkbox"
-          name="sunroof"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="sunroof" class="pl-1">Sunroof</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="tapiceria"
-          v-model="models.tapiceria"
-          type="checkbox"
-          name="tapiceria"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="tapiceria" class="pl-1">Tapicería en cuero</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="electricos"
-          v-model="models.electricos"
-          type="checkbox"
-          name="electricos"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="electricos" class="pl-1">Vidrios eléctricos</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="polarizados"
-          v-model="models.polarizados"
-          type="checkbox"
-          name="polarizados"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="polarizados" class="pl-1">Vidrios polarizados</label>
+        <label :for="item.model" class="pl-1">{{ item.name }}</label>
       </div>
     </article>
   </section>
 </template>
-
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Confort',
+  props: {
+    busqueda: {
+      required: true,
+      type: String,
+    },
+  },
   data() {
     return {
-      models: {
-        acondicionado: '',
-        bluethoot: '',
-        climatizador: '',
-        dvd: '',
-        gps: '',
-        luces: '',
-        radio: '',
-        reproductor: '',
-        retrovisores: '',
-        lluvia: '',
-        parqueo: '',
-        electricas: '',
-        sunroof: '',
-        tapiceria: '',
-        electricos: '',
-        polarizados: '',
-      },
+      array: [
+        { name: 'Aire acondicionado', model: 'acondicionado', status: false },
+        { name: 'Bluethoot', model: 'bluethoot', status: false },
+        { name: 'Climatizador', model: 'Climatizador', status: false },
+        { name: 'DVD', model: 'dvd', status: false },
+        { name: 'GPS', model: 'gps', status: false },
+        { name: 'Luces', model: 'luces', status: false },
+        { name: 'Radio', model: 'Radio', status: false },
+        { name: 'Reproductos MP3', model: 'reproductor', status: false },
+        {
+          name: 'Retrovisores Electricos',
+          model: 'retrovisores',
+          status: false,
+        },
+        { name: 'Sensor lluvia', model: 'lluvia', status: false },
+        { name: 'Sensor parqueo', model: 'parqueo', status: false },
+        { name: 'Sillas eléctricas', model: 'electricas', status: false },
+        { name: 'Sunroof', model: 'sunroof', status: false },
+        { name: 'Tapicería en cuero', model: 'tapiceria', status: false },
+        { name: 'Vidrios eléctricos', model: 'electricos', status: false },
+        { name: 'Vidrios polarizados', model: 'polarizados', status: false },
+      ],
       activateButton: '',
     }
   },
+  computed: {
+    ...mapState({
+      caracteristicas: (state) => state.items.confort,
+    }),
+    filterName() {
+      const data = this.array.filter((e) => {
+        if (e.name.toLowerCase().includes(this.busqueda)) {
+          return true
+        } else {
+          return false
+        }
+      })
+      return data
+    },
+  },
+  created() {
+    this.checked()
+  },
   methods: {
-    change() {
-      const array = Object.values(this.models)
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index]
-        if (element === true) {
+    ...mapActions({
+      setData: 'items/setData',
+    }),
+    change(param) {
+      this.setData(param)
+      for (let index = 0; index < this.array.length; index++) {
+        const element = this.array[index]
+        if (element.status === true) {
           this.activateButton = true
         }
+      }
+    },
+    checked() {
+      for (let index = 0; index < this.caracteristicas.length; index++) {
+        const element = this.caracteristicas[index]
+        const checked = this.array.find((e) => e.model === element.model)
+        checked.status = true
       }
     },
   },

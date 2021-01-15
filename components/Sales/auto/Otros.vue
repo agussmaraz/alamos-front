@@ -1,96 +1,58 @@
 <template>
   <section>
     <article class="overflow-y-auto py-48">
-      <div class="checkbox div-checkout px-3">
+      <div
+        v-for="(item, index) in filterName"
+        :key="index"
+        class="checkbox div-checkout px-3"
+      >
         <input
-          id="discapacidad"
-          v-model="models.discapacidad"
+          :id="item.model"
+          v-model="item.status"
           type="checkbox"
-          name="discapacidad"
+          :name="item.model"
           class="input-div. w-4 h-5 md:h-6"
-          @change="change"
+          @change="change(item)"
         />
-        <label for="discapacidad" class="pl-1"
-          >Adaptado a personas con discapacidad</label
-        >
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="fabrica"
-          v-model="models.fabrica"
-          type="checkbox"
-          name="fabrica"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="fabrica" class="pl-1">Garantía fabrica</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="mecanica"
-          v-model="models.mecanica"
-          type="checkbox"
-          name="mecanica"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="mecanica" class="pl-1">Mécanica</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="pantalla"
-          v-model="models.pantalla"
-          type="checkbox"
-          name="pantalla"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="pantalla" class="pl-1">Pantalla en asiento pasajeros</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="portaequipajes"
-          v-model="models.portaequipajes"
-          type="checkbox"
-          name="portaequipajes"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="portaequipajes" class="pl-1"
-          >Porta equipajes en techo</label
-        >
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="rines"
-          v-model="models.rines"
-          type="checkbox"
-          name="rines"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="rines" class="pl-1">Rines de lujo</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="asegurado"
-          v-model="models.asegurado"
-          type="checkbox"
-          name="asegurado"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="asegurado" class="pl-1">Vehículo asegurado</label>
+        <label :for="item.model" class="pl-1">{{ item.name }}</label>
       </div>
     </article>
   </section>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Confort',
+  props: {
+    busqueda: {
+      required: true,
+      type: String,
+    },
+  },
   data() {
     return {
+      array: [
+        {
+          name: 'Adaptado a personas con discapacidad',
+          model: 'discapacidad',
+          status: false,
+        },
+        { name: 'Garantía fabrica', model: 'fabrica', status: false },
+        { name: 'Mécanica', model: 'mecanica', status: false },
+        {
+          name: 'Pantalla en asientos pasajeros',
+          model: 'pantalla',
+          status: false,
+        },
+        {
+          name: 'Porta equipajes en techo',
+          model: 'portaequipaje',
+          status: false,
+        },
+        { name: 'Rines de lujo', model: 'rines', status: false },
+        { name: 'Vehículo asegurado', model: 'vehiculo', status: false },
+      ],
       models: {
         discapacidad: '',
         fabrica: '',
@@ -103,14 +65,43 @@ export default {
       activateButton: '',
     }
   },
+  created() {
+    this.checked()
+  },
+  computed: {
+    ...mapState({
+      caracteristicas: (state) => state.items.otros,
+    }),
+    filterName() {
+      const data = this.array.filter((e) => {
+        if (e.name.toLowerCase().includes(this.busqueda)) {
+          return true
+        } else {
+          return false
+        }
+      })
+      return data
+    },
+  },
   methods: {
-    change() {
-      const array = Object.values(this.models)
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index]
-        if (element === true) {
+    ...mapActions({
+      addData: 'items/addData',
+    }),
+    change(param) {
+      // console.log(param)
+      this.addData(param)
+      for (let index = 0; index < this.array.length; index++) {
+        const element = this.array[index]
+        if (element.status === true) {
           this.activateButton = true
         }
+      }
+    },
+    checked() {
+      for (let index = 0; index < this.caracteristicas.length; index++) {
+        const element = this.caracteristicas[index]
+        const checked = this.array.find((e) => e.model === element.model)
+        checked.status = true
       }
     },
   },

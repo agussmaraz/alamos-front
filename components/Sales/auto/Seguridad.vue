@@ -1,178 +1,137 @@
 <template>
   <section>
     <article class="overflow-y-auto py-48">
-      <div class="checkbox div-checkout px-3">
+      <div
+        v-for="(item, index) in filterName"
+        :key="index"
+        class="checkbox div-checkout px-3"
+      >
         <input
-          id="conductor"
-          v-model="models.conductor"
+          :id="item.model"
+          v-model="item.status"
           type="checkbox"
-          name="conductor"
+          :name="item.model"
           class="input-div. w-4 h-5 md:h-6"
-          @change="change"
+          @change="change(item)"
         />
-        <label for="conductor" class="pl-1">Airbag conductor</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="pasajeros"
-          v-model="models.pasajeros"
-          type="checkbox"
-          name="pasajeros"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="pasajeros" class="pl-1">Airbags pasajeros</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="alarma"
-          v-model="models.alarma"
-          type="checkbox"
-          name="alarma"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="alarma" class="pl-1">Alarma</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="frontal"
-          v-model="models.frontal"
-          type="checkbox"
-          name="frontal"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="frontal" class="pl-1">Cámara frontal</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="reversa"
-          v-model="models.reversa"
-          type="checkbox"
-          name="reversa"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="reversa" class="pl-1">Cámara reversa</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="control"
-          v-model="models.control"
-          type="checkbox"
-          name="control"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="control" class="pl-1">Control de estabilidad</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="trasero"
-          v-model="models.trasero"
-          type="checkbox"
-          name="trasero"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="trasero" class="pl-1">Desempañador trasero</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="delantero"
-          v-model="models.delantero"
-          type="checkbox"
-          name="delantero"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="delantero" class="pl-1">Exploradoras delanteras</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="exploradoras"
-          v-model="models.exploradoras"
-          type="checkbox"
-          name="exploradoras"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="exploradoras" class="pl-1">Exploradoras traseras</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="halogenos"
-          v-model="models.halogenos"
-          type="checkbox"
-          name="halogenos"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="halogenos" class="pl-1">Faros halógenos</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="led"
-          v-model="models.led"
-          type="checkbox"
-          name="led"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="led" class="pl-1">Faros led</label>
-      </div>
-      <div class="checkbox div-checkout px-3">
-        <input
-          id="frenos"
-          v-model="models.frenos"
-          type="checkbox"
-          name="frenos"
-          class="input-div. w-4 h-5 md:h-6"
-          @change="change"
-        />
-        <label for="frenos" class="pl-1">Frenos ABS</label>
+        <label :for="item.model" class="pl-1">{{ item.name }}</label>
       </div>
     </article>
-    <div
-      v-if="activateButton"
-      class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg m-auto button-sig"
-    >
-      <button class="a">Siguiente</button>
-    </div>
   </section>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Seguridad',
+  props: {
+    busqueda: {
+      required: true,
+      type: String,
+    },
+  },
   data() {
     return {
-      models: {
-        conductor: '',
-        pasajeros: '',
-        alarma: '',
-        frontal: '',
-        reversa: '',
-        control: '',
-        desempañador: '',
-        delanteras: '',
-        traseras: '',
-        halogenos: '',
-        led: '',
-        faros: '',
-      },
-      activateButton: '',
+      array: [
+        {
+          name: 'Airbag conductor',
+          model: 'conductor',
+          status: false,
+        },
+        {
+          name: 'Airbag pasajero',
+          model: 'pasajeros',
+          status: false,
+        },
+        {
+          name: 'Alarma',
+          model: 'alarma',
+          status: false,
+        },
+        {
+          name: 'Cámara frontal',
+          model: 'frontal',
+          status: false,
+        },
+        {
+          name: 'Cámara reversa',
+          model: 'reversa',
+          status: false,
+        },
+        {
+          name: 'Control de estabilidad',
+          model: 'control',
+          status: false,
+        },
+        {
+          name: 'Desempañador trasero',
+          model: 'desempañador',
+          status: false,
+        },
+        {
+          name: 'Exploradoras delanteras',
+          model: 'delanteras',
+          status: false,
+        },
+        {
+          name: 'Exploradoras traseras',
+          model: 'traseras',
+          status: false,
+        },
+        {
+          name: 'Faros Halógenos',
+          model: 'halogenos',
+          status: false,
+        },
+        {
+          name: 'Faros Led',
+          model: 'led',
+          status: false,
+        },
+        {
+          name: 'Fenos ABS',
+          model: 'abs',
+          status: false,
+        },
+      ],
     }
   },
-  methods: {
-    change() {
-      const array = Object.values(this.models)
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index]
-        if (element === true) {
-          this.activateButton = true
+  computed: {
+    ...mapState({
+      caracteristicas: (state) => state.items.seguridad,
+    }),
+    filterName() {
+      const data = this.array.filter((e) => {
+        if (e.name.toLowerCase().includes(this.busqueda)) {
+          return true
+        } else {
+          return false
         }
+      })
+      return data
+    },
+  },
+  created() {
+    this.checked()
+  },
+  methods: {
+    ...mapActions({
+      getData: 'items/getData',
+    }),
+    change(param) {
+      this.getData(param)
+      for (let index = 0; index < this.array.length; index++) {
+        const element = this.array[index]
+        if (element.status === true) {
+          this.$emit('checkbox', true)
+        }
+      }
+    },
+    checked() {
+      for (let index = 0; index < this.caracteristicas.length; index++) {
+        const element = this.caracteristicas[index]
+        const checked = this.array.find((e) => e.model === element.model)
+        checked.status = true
       }
     },
   },

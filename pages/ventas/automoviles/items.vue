@@ -10,23 +10,46 @@
         <div class="title font-bold">Items vehículos</div>
       </nav>
       <article class="flex items-center justify-around py-3">
-        <p class="font-bold w-1/3 text-center pb-2 border-b-4 border-rojo">
+        <p
+          class="font-bold w-1/3 text-center pb-2"
+          :class="componente_actual == 'Seguridad' ? 'active' : false"
+          @click="componente_actual = 'Seguridad'"
+        >
           Seguridad
         </p>
-        <p class="font-bold w-1/3 text-center pb-2">Confort</p>
-        <p class="font-bold w-1/3 text-center pb-2">Otros</p>
+        <p
+          class="font-bold w-1/3 text-center pb-2"
+          :class="componente_actual == 'Confort' ? 'active' : false"
+          @click="componente_actual = 'Confort'"
+        >
+          Confort
+        </p>
+        <p
+          class="font-bold w-1/3 text-center pb-2"
+          :class="componente_actual == 'Otros' ? 'active' : false"
+          @click="componente_actual = 'Otros'"
+        >
+          Otros
+        </p>
       </article>
       <article class="flex justify-center mt-3">
         <input
+          v-model="busqueda"
           type="text"
           class="w-64 rounded-full h-10 border border-gray-200 pl-10 relative"
           placeholder="Buscador"
+          @keyup="newSearch(busqueda)"
         />
         <IconSearch2 class="w-6 h-6 absolute" />
       </article>
     </article>
-    <component :is="componente_actual" />
+    <component
+      :is="componente_actual"
+      :busqueda="busqueda"
+      @checkbox="change"
+    />
     <div
+      v-if="activateButton"
       class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg m-auto button-sig"
     >
       <button class="a" @click="changePage">Siguiente</button>
@@ -41,6 +64,7 @@ export default {
     Seguridad: () => import('@/components/Sales/auto/Seguridad'),
     Confort: () => import('@/components/Sales/auto/Confort'),
     Otros: () => import('@/components/Sales/auto/Otros'),
+    // Elegidos: () => import('@/components/Sales/auto/Elegidos'),
   },
   data() {
     return {
@@ -60,6 +84,7 @@ export default {
       },
       activateButton: '',
       componente_actual: 'Seguridad',
+      busqueda: '',
     }
   },
   methods: {
@@ -68,22 +93,27 @@ export default {
         this.componente_actual = 'Confort'
       } else if (this.componente_actual === 'Confort') {
         this.componente_actual = 'Otros'
+      } else if (this.componente_actual === 'Otros') {
+        this.$router.push('/ventas/automoviles/caracteristicas')
       }
     },
-    change() {
-      const array = Object.values(this.models)
-      for (let index = 0; index < array.length; index++) {
-        const element = array[index]
-        if (element === true) {
-          this.activateButton = true
-        }
+    change(value) {
+      // console.log(value)
+      if (value === true) {
+        this.activateButton = true
       }
+    },
+    newSearch(param) {
+      this.busqueda = param
     },
   },
 }
 </script>
 
 <style scoped>
+.active {
+  border-bottom: solid #ed1a3b 4px;
+}
 .a {
   color: white;
   outline: none;

@@ -65,9 +65,6 @@ export default {
       activateButton: '',
     }
   },
-  created() {
-    this.checked()
-  },
   computed: {
     ...mapState({
       caracteristicas: (state) => state.items.otros,
@@ -82,6 +79,9 @@ export default {
       })
       return data
     },
+  },
+  created() {
+    this.checked()
   },
   methods: {
     ...mapActions({

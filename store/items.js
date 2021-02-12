@@ -14,6 +14,9 @@ export const actions = {
   setData({ commit }, data) {
     commit('SET_DATA', data)
   },
+  deleteData({ commit }, data) {
+    commit('DELETE_DATA', data)
+  },
 }
 export const mutations = {
   ADD_DATA(state, data) {
@@ -24,5 +27,9 @@ export const mutations = {
   },
   SET_DATA(state, data) {
     state.confort.push(data)
+  },
+  DELETE_DATA(state, data) {
+    const index = state[data.tipo].findIndex((e) => e.name === data.dato.name)
+    state[data.tipo].splice(index, 1)
   },
 }

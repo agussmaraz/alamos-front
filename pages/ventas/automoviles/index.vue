@@ -14,13 +14,13 @@
         <IconVolante class="w-12 h-10 mt-2 m-auto indicado" />
       </div>
       <div class="div-icon">
-        <IconCamera class="w-12 h-10 mt-2 m-auto" />
+        <IconCamera class="w-12 h-10 mt-2 m-auto icon-normal" />
       </div>
       <div class="div-icon">
-        <IconCarPin class="w-12 h-12 mt-1 m-auto" />
+        <IconCarPin class="w-12 h-12 mt-1 m-auto icon-normal" />
       </div>
       <div class="div-icon">
-        <IconComments class="w-12 h-10 mt-2 m-auto" />
+        <IconComments class="w-12 h-10 mt-2 m-auto icon-normal" />
       </div>
     </article>
     <article>
@@ -67,5 +67,8 @@ nav {
 }
 .indicado {
   fill: #ed1a3b;
+}
+.icon-normal {
+  fill: #c4c4c4;
 }
 </style>

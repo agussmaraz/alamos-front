@@ -10,11 +10,16 @@
     <section class="w-full">
       <article class="relative mt-4">
         <input
-          v-model="data.nombre_empresa"
+          :value="data.nombre"
           type="text"
+          :class="{ inputError: errores.nombre && errores.nombre.error }"
           class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
           @click="activate('nombre_empresa')"
+          @focus="activate('nombre_empresa')"
+          @input="(event) => inputValue(event, 'nombre')"
         />
+        <IconError v-if="errores.nombre" class="w-6 h-6 absolute icono-error" />
+
         <div
           class="div-label absolute px-2"
           :class="
@@ -23,15 +28,26 @@
               : false
           "
         >
-          <label for="" class="text-rojo text-xs">Nombre de la empresa</label>
+          <label
+            for=""
+            class="text-rojo text-xs"
+            @click="activate('nombre_empresa')"
+            >Nombre de la empresa</label
+          >
         </div>
       </article>
       <article class="relative my-12">
         <input
+          :value="data.razon"
           type="text"
           class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+          :class="{ inputError: errores.razon && errores.razon.error }"
           @click="activate('razon_social')"
+          @focus="activate('razon_social')"
+          @input="(event) => inputValue(event, 'razon')"
         />
+        <IconError v-if="errores.razon" class="w-6 h-6 absolute icono-error" />
+
         <div
           class="div-label absolute px-2"
           :class="
@@ -40,20 +56,33 @@
               : false
           "
         >
-          <label for="" class="text-rojo text-xs">Razón social</label>
+          <label
+            for=""
+            class="text-rojo text-xs"
+            @click="activate('razon_social')"
+            >Razón social</label
+          >
         </div>
       </article>
       <article class="relative my-12">
         <input
+          :value="data.nit"
           type="text"
           class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+          :class="{ inputError: errores.nit && errores.nit.error }"
           @click="activate('nit')"
+          @focus="activate('nit')"
+          @input="(event) => inputValue(event, 'nit')"
         />
+        <IconError v-if="errores.nit" class="w-6 h-6 absolute icono-error" />
+
         <div
           class="div-label absolute px-2"
           :class="active === 'nit' || data.nit != '' ? 'moveLabel' : false"
         >
-          <label for="" class="text-rojo text-xs">NIT</label>
+          <label for="" class="text-rojo text-xs" @click="activate('nit')"
+            >NIT</label
+          >
         </div>
       </article>
     </section>
@@ -61,25 +90,33 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'DatosEmpresa2',
   data() {
     return {
       active: 'false',
-      data: {
-        nombre_empresa: '',
-        razon_social: '',
-        nit: '',
-      },
       buttonGenero: '',
     }
   },
+  computed: {
+    ...mapState({
+      data: (state) => state.empresa.datos,
+      errores: (state) => state.empresa.errores,
+    }),
+  },
   methods: {
+    ...mapActions({
+      setData: 'empresa/setData',
+    }),
     activate(id) {
       this.active = id
     },
     activeButton(id) {
       this.buttonGenero = id
+    },
+    inputValue(event, campo) {
+      this.setData({ [campo]: event.target.value })
     },
   },
 }
@@ -95,6 +132,14 @@ export default {
   margin-top: 60px;
   margin-bottom: 60px;
   margin-left: 80px;
+}
+.icono-error {
+  top: 12px;
+  right: 71px;
+}
+.inputError {
+  border: solid #ed1ad8 2px;
+  @apply rounded-md;
 }
 .parrafo {
   font-family: 'Montserrat', sans-serif;
@@ -114,7 +159,7 @@ a {
 }
 .moveLabel {
   margin-top: -21px;
-  transition: margin-top 1s;
+  transition: margin-top 300ms;
 }
 .button-medio {
   border-left: solid #ed1a3b 1px;

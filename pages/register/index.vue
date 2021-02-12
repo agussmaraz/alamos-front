@@ -2,7 +2,7 @@
   <section class="flex flex-col items-center text-center">
     <aside class="w-full flex justify-start my-4 ml-2">
       <nuxt-link to="/">
-        <IconArrow />
+        <IconArrow class="icon" />
       </nuxt-link>
     </aside>
     <span class="flex text-rojo items-center text-2xl mt-4 header">
@@ -32,12 +32,12 @@
       <div
         class="bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto mr-2"
       >
-        <nuxt-link class="a" to="/register/empresa/page">Soy empresa</nuxt-link>
+        <nuxt-link class="a" to="/register/empresa">Soy empresa</nuxt-link>
       </div>
       <div
         class="bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto ml-2"
       >
-        <nuxt-link class="a" to="/register/particular/page"
+        <nuxt-link class="a" to="/register/particular"
           >Soy particular</nuxt-link
         >
       </div>

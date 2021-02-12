@@ -11,7 +11,7 @@
       <br />
       <p>Te enviamos el email a:</p>
     </div>
-    <p class="text-rojo font-bold text-lg">concesionario@empresa.com</p>
+    <p class="text-rojo font-bold text-lg">{{ user.correo }}</p>
     <button class="button-reenviar p-2 rounded-md parrafo w-32 shadow-md mt-8">
       Reenviar
     </button>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'DatosEmpresa3',
   data() {
@@ -31,6 +32,11 @@ export default {
       },
       buttonGenero: '',
     }
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.empresa.datos,
+    }),
   },
   methods: {
     activate(id) {

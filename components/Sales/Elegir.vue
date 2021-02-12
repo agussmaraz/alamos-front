@@ -1,22 +1,28 @@
 <template>
-  <section class="flex flex-col items-center">
+  <section class="caja-padre flex flex-col items-center">
     <h1 class="text-xl font-bold mt-5">¿Qué quieres vender?</h1>
     <section class="mt-10">
       <nuxt-link
         to="/ventas/automoviles"
         class="flex caja-opcion items-center justify-around"
       >
-        <IconCarSuv class="w-20" />
+        <IconCarSuv class="w-20 icon" />
         <p class="div-p">Carro</p>
       </nuxt-link>
-      <article class="flex caja-opcion1 items-center justify-around mt-10">
-        <IconMoto class="w-16" />
+      <nuxt-link
+        to="/ventas/motos"
+        class="flex caja-opcion1 items-center justify-around mt-10"
+      >
+        <IconMoto class="w-16 icon" />
         <p class="div-p">Moto</p>
-      </article>
-      <article class="flex caja-opcion2 items-center justify-around mt-10">
-        <IconElipsis class="w-12" />
+      </nuxt-link>
+      <nuxt-link
+        to="/ventas/otros"
+        class="flex caja-opcion2 items-center justify-around mt-10"
+      >
+        <IconElipsis class="w-12 icon" />
         <p class="div-p">Otro</p>
-      </article>
+      </nuxt-link>
     </section>
   </section>
 </template>
@@ -27,8 +33,8 @@ export default {
 }
 </script>
 
-<style>
-svg {
+<style scoped>
+.icon {
   fill: #747474;
 }
 .elipsis {
@@ -55,7 +61,7 @@ svg {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background: linear-gradient(110deg, #f2efef 46%, #ffff 46%);
 }
-section {
+.caja-padre {
   background-color: white;
 }
 .div-p {

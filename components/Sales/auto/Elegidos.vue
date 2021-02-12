@@ -1,7 +1,7 @@
 <template>
   <section class="flex flex-col items-center">
     <h1 class="my-5">Características adicionales</h1>
-    <button class="">
+    <button class="button-items">
       <nuxt-link to="/ventas/automoviles/items">
         Items seleccionados
         <span>+</span>
@@ -10,31 +10,52 @@
     <section class="caja-items">
       <article class="text-left my-4">
         <h3 class="font-bold text-base mb-3">Seguridad</h3>
-        <p v-for="(item, index) in seguridad" :key="index" class="text-sm">
-          {{ item.name }}
-          <span class="text-rojo text-lg cursor-pointer">x</span>
-        </p>
+        <div v-for="(item, index) in seguridad" :key="index">
+          <p class="text-sm">
+            {{ item.name }}
+            <button
+              class="text-rojo text-lg cursor-pointer button-eliminar"
+              @click.prevent="deleteData({ tipo: 'seguridad', dato: item })"
+            >
+              x
+            </button>
+          </p>
+        </div>
       </article>
       <article class="text-left my-4">
         <h3 class="font-bold text-base mb-3">Confort</h3>
-        <p v-for="(item, index) in confort" :key="index" class="text-sm">
-          {{ item.name }}
-          <span class="text-rojo text-lg cursor-pointer">x</span>
-        </p>
+        <div v-for="(item, index) in confort" :key="index">
+          <p class="text-sm">
+            {{ item.name }}
+            <button
+              class="text-rojo text-lg cursor-pointer button-eliminar"
+              @click.prevent="deleteData({ tipo: 'confort', dato: item })"
+            >
+              x
+            </button>
+          </p>
+        </div>
       </article>
       <article class="text-left my-4">
         <h3 class="font-bold text-base mb-3">Otros</h3>
-        <p v-for="(item, index) in otros" :key="index" class="text-sm">
-          {{ item.name }}
-          <span class="text-rojo text-lg cursor-pointer">x</span>
-        </p>
+        <div v-for="(item, index) in otros" :key="index">
+          <p class="text-sm">
+            {{ item.name }}
+            <button
+              class="text-rojo text-lg cursor-pointer button-eliminar"
+              @click.prevent="deleteData({ tipo: 'otros', dato: item })"
+            >
+              x
+            </button>
+          </p>
+        </div>
       </article>
     </section>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Elegidos',
   computed: {
@@ -44,10 +65,18 @@ export default {
       confort: (state) => state.items.confort,
     }),
   },
+  methods: {
+    ...mapActions({
+      deleteData: 'items/deleteData',
+    }),
+  },
 }
 </script>
 
 <style scoped>
+.button-eliminar {
+  outline: none;
+}
 p {
   background: #f9f8f8;
   border: 1px solid #dadada;
@@ -65,7 +94,7 @@ h1 {
   font-size: 20px;
   font-weight: bold;
 }
-button {
+.button-items {
   background-color: #e5e5e5;
   outline: none;
   width: 70%;

@@ -1,47 +1,22 @@
 <template>
   <section class="flex flex-col items-center text-center">
     <span class="flex text-2xl mt-6 header text-center text-rojo">
-      Crea tu clave de 6 dígitos
+      Términos y Condiciones
     </span>
-    <article class="flex mt-20">
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none rounded-r-none rounded-md ml-2 p-3 text-lg"
-      />
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none ml-2 p-3 text-2xl"
-        style="-webkit-text-security: square"
-      />
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none ml-2 p-3 text-2xl"
-      />
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none ml-2 p-3 text-2xl"
-      />
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none ml-2 p-3 text-2xl"
-      />
-      <input
-        type="password"
-        name=""
-        class="border-b-2 border-rojo rounded-l-none ml-2 p-3 text-2xl"
-      />
-    </article>
+    <div class="text-sm div-parrafo">
+      <span class="parrafo">Para abrir tu cuenta de</span>
+      <span>Álamos</span>
+      <span class="parrafo"
+        >tienes que aceptar los términos y condiciones.</span
+      >
+    </div>
+    <p class="text-xs parrafo underline mt-64">Leer Términos y Condiciones</p>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'DatosEmpresa8',
+  name: 'DatosEmpresa9',
   data() {
     return {
       active: 'false',
@@ -65,15 +40,7 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-input {
-  width: 50px;
-  height: 60px;
-  outline: none;
-  font: small-caption;
-  font-size: 67px;
-  text-align: center;
-  color: red;
-}
+
 .icon {
   fill: #ed1a3b;
 }

@@ -5,8 +5,10 @@
     </div>
     <ul class="flex justify-between items-center px-2">
       <li>
-        <IconHome class="w-6 h-6" />
-        Inicio
+        <nuxt-link to="/home">
+          <IconHome class="w-6 h-6" />
+          Inicio
+        </nuxt-link>
       </li>
       <li>
         <IconFav class="w-6 h-6" />

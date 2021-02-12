@@ -1,4 +1,7 @@
 export default {
+  server: {
+    host: '192.168.0.10',
+  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -29,7 +32,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/css/pageTransition.css'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -48,6 +51,7 @@ export default {
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/device',
   ],
   /*
    ** Nuxt.js modules

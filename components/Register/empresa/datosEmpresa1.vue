@@ -18,26 +18,43 @@
     <section class="w-full">
       <article class="relative mt-10">
         <input
-          v-model="data.correo"
-          type="text"
-          class="border border-rojo rounded-md h-12 outline-none pl-4"
+          :value="data.correo"
+          type="email"
+          class="border border-rojo rounded-md h-12 outline-none pl-4 relative"
+          :class="{ inputError: errores.correo && errores.correo.error }"
           @click="activate('correo')"
+          @focus="activate('correo')"
+          @input="(event) => inputValue(event, 'correo')"
         />
+        <IconError v-if="errores.correo" class="w-6 h-6 absolute icono-error" />
         <div
           class="div-label absolute px-2"
           :class="
             active === 'correo' || data.correo != '' ? 'moveLabel' : false
           "
         >
-          <label for="" class="text-rojo text-xs">Correo electrónico</label>
+          <label for="" class="text-rojo text-xs" @click="activate('correo')"
+            >Correo electrónico</label
+          >
         </div>
       </article>
       <article class="relative mt-10">
         <input
-          type="text"
+          :value="data.confirmacion"
+          type="email"
           class="border border-rojo rounded-md h-12 outline-none pl-4"
+          :class="{
+            inputError: errores.confirmacion && errores.confirmacion.error,
+          }"
           @click="activate('confirmar')"
+          @focus="activate('confirmar')"
+          @input="(event) => inputValue(event, 'confirmacion')"
         />
+        <IconError
+          v-if="errores.confirmacion"
+          class="w-6 h-6 absolute icono-error"
+        />
+
         <div
           class="div-label absolute px-2"
           :class="
@@ -46,26 +63,39 @@
               : false
           "
         >
-          <label for="" class="text-rojo text-xs">Confirmar correo</label>
+          <label for="" class="text-rojo text-xs" @click="activate('confirmar')"
+            >Confirmar correo</label
+          >
         </div>
+        <!-- {{ errores.correo.error.length }} -->
       </article>
     </section>
   </section>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'DatosEmpresa1',
   data() {
     return {
       active: 'false',
-      data: {
-        correo: '',
-        confirmacion: '',
-      },
     }
   },
+  computed: {
+    ...mapState({
+      errores: (state) => state.empresa.errores,
+      data: (state) => state.empresa.datos,
+    }),
+  },
   methods: {
+    ...mapActions({
+      setData: 'empresa/setData',
+      // validate: 'empresa/validate',
+    }),
+    inputValue(event, campo) {
+      this.setData({ [campo]: event.target.value })
+    },
     activate(id) {
       this.active = id
     },
@@ -78,6 +108,14 @@ export default {
 
 .icon {
   fill: #ed1a3b;
+}
+.icono-error {
+  top: 12px;
+  right: 71px;
+}
+.inputError {
+  border: solid #ed1ad8 2px;
+  @apply rounded-md;
 }
 .icono {
   margin-top: 60px;
@@ -102,7 +140,7 @@ a {
 }
 .moveLabel {
   margin-top: -21px;
-  transition: margin-top 1s;
+  transition: margin-top 300ms;
 }
 input {
   width: 300px;

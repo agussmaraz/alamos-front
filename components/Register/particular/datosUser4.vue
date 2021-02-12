@@ -25,10 +25,6 @@ export default {
   data() {
     return {
       active: 'false',
-      data: {
-        first_name: '',
-        last_name: '',
-      },
       buttonGenero: '',
     }
   },

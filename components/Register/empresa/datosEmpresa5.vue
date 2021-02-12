@@ -6,33 +6,54 @@
     <section class="w-full">
       <article class="relative mt-20">
         <input
-          v-model="data.telefono"
+          :value="data.telefono"
           type="text"
           class="border border-rojo rounded-md h-12 outline-none pl-4"
+          :class="{ inputError: errores.telefono && errores.telefono.error }"
           @click="activate('telefono')"
+          @focus="activate('telefono')"
+          @input="(event) => inputValue(event, 'telefono')"
         />
+        <IconError
+          v-if="errores.telefono"
+          class="w-6 h-6 absolute icono-error"
+        />
+
         <div
           class="div-label absolute px-2"
           :class="
             active === 'telefono' || data.telefono != '' ? 'moveLabel' : false
           "
         >
-          <label for="" class="text-rojo text-xs">Teléfono fijo</label>
+          <label for="" class="text-rojo text-xs" @click="activate('telefono')"
+            >Teléfono fijo</label
+          >
         </div>
       </article>
       <article class="relative mt-10">
         <input
+          :value="data.celular"
           type="text"
           class="border border-rojo rounded-md h-12 outline-none pl-4"
+          :class="{ inputError: errores.celular && errores.celular.error }"
           @click="activate('celular')"
+          @focus="activate('celular')"
+          @input="(event) => inputValue(event, 'celular')"
         />
+        <IconError
+          v-if="errores.celular"
+          class="w-6 h-6 absolute icono-error"
+        />
+
         <div
           class="div-label absolute px-2"
           :class="
             active === 'celular' || data.celular != '' ? 'moveLabel' : false
           "
         >
-          <label for="" class="text-rojo text-xs">Celular</label>
+          <label for="" class="text-rojo text-xs" @click="activate('celular')"
+            >Celular</label
+          >
         </div>
       </article>
     </section>
@@ -40,20 +61,29 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'DatosEmpresa5',
   data() {
     return {
       active: 'false',
-      data: {
-        telefono: '',
-        celular: '',
-      },
     }
   },
+  computed: {
+    ...mapState({
+      data: (state) => state.empresa.datos,
+      errores: (state) => state.empresa.errores,
+    }),
+  },
   methods: {
+    ...mapActions({
+      setData: 'empresa/setData',
+    }),
     activate(id) {
       this.active = id
+    },
+    inputValue(event, campo) {
+      this.setData({ [campo]: event.target.value })
     },
   },
 }
@@ -64,6 +94,14 @@ export default {
 
 .icon {
   fill: #ed1a3b;
+}
+.icono-error {
+  top: 12px;
+  right: 71px;
+}
+.inputError {
+  border: solid #ed1ad8 2px;
+  @apply rounded-md;
 }
 .icono {
   margin-top: 60px;
@@ -88,7 +126,7 @@ a {
 }
 .moveLabel {
   margin-top: -21px;
-  transition: margin-top 1s;
+  transition: margin-top 300ms;
 }
 input {
   width: 300px;

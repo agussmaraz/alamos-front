@@ -30,7 +30,7 @@
       <div>
         <label for="">Kilometraje*</label>
         <span>
-          <input type="text" />
+          <input v-model="km" type="text" />
           <span class="text-gray-400"> Km </span>
         </span>
       </div>
@@ -68,6 +68,7 @@ export default {
       caja: ['Automática', 'Mecánica', 'Secuencial'],
       transmision: ['4x2', '4x4', '6x2', '6x4', '8x4'],
       direccion: ['Hidráulica', 'Electroasistida', 'Asistida', 'Mecánica'],
+      km: '12.000',
     }
   },
   methods: {

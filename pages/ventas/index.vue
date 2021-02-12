@@ -7,7 +7,9 @@
         </nuxt-link>
       </div>
       <div class="font-bold">Publicar vehiculo</div>
-      <div class="font-bold text-xs mt-1">Cancelar</div>
+      <div class="font-bold text-xs mt-1">
+        <nuxt-link to="/home"> Cancelar </nuxt-link>
+      </div>
     </nav>
     <article class="caja-pasos flex justify-between mt-5 px-8 py-4">
       <div class="div-icon">
@@ -35,7 +37,7 @@
 export default {
   name: 'Venta',
   components: {
-    Elegir: () => import('@/components/Sales/Elegir'),
+    // Elegir: () => import('@/components/Sales/Elegir'),
   },
   data() {
     return {

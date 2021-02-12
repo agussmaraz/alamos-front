@@ -43,22 +43,25 @@
         <IconSearch2 class="w-6 h-6 absolute" />
       </article>
     </article>
-    <component
-      :is="componente_actual"
-      :busqueda="busqueda"
-      @checkbox="change"
-    />
+    <transition name="slide-fade">
+      <component
+        :is="componente_actual"
+        :busqueda="busqueda"
+        @checkbox="change"
+      />
+    </transition>
     <div
       v-if="activateButton"
       class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg m-auto button-sig"
     >
-      <button class="a" @click="changePage">Siguiente</button>
+      <button class="a w-full h-full" @click="changePage">Siguiente</button>
     </div>
     <Footer />
   </section>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   components: {
     Seguridad: () => import('@/components/Sales/auto/Seguridad'),
@@ -68,26 +71,28 @@ export default {
   },
   data() {
     return {
-      models: {
-        conductor: '',
-        pasajeros: '',
-        alarma: '',
-        frontal: '',
-        reversa: '',
-        control: '',
-        desempañador: '',
-        delanteras: '',
-        traseras: '',
-        halogenos: '',
-        led: '',
-        faros: '',
-      },
       activateButton: '',
       componente_actual: 'Seguridad',
       busqueda: '',
     }
   },
+  computed: {
+    ...mapState({
+      caracteristicas: (state) => state.items.seguridad,
+    }),
+  },
+  created() {
+    this.findState()
+  },
   methods: {
+    findState() {
+      for (let index = 0; index < this.caracteristicas.length; index++) {
+        const element = this.caracteristicas[index]
+        if (element.status === true) {
+          this.activateButton = true
+        }
+      }
+    },
     changePage() {
       if (this.componente_actual === 'Seguridad') {
         this.componente_actual = 'Confort'
@@ -111,6 +116,14 @@ export default {
 </script>
 
 <style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
+}
 .active {
   border-bottom: solid #ed1a3b 4px;
 }

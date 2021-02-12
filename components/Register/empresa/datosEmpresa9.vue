@@ -1,22 +1,24 @@
 <template>
   <section class="flex flex-col items-center text-center">
-    <span class="flex text-2xl mt-6 header text-center text-rojo">
-      Términos y Condiciones
+    <IconCongrats class="w-20 mt-6" />
+    <span class="flex text-2xl mt-10 header text-center text-rojo">
+      ¡Felicitaciones!
+      <br />
+      Tu cuenta ya está activa
     </span>
-    <div class="text-sm div-parrafo">
-      <span class="parrafo">Para abrir tu cuenta de</span>
-      <span>Álamos</span>
-      <span class="parrafo"
-        >tienes que aceptar los términos y condiciones.</span
-      >
+    <div class="parrafo text-sm div-parrafo">
+      <p>
+        ¡Listo! Ya puedes subir tus vehículos al marketplace y crear tu
+        <a href=""> TIENDA VIRTUAL </a>
+        para alcanzar más clientes.
+      </p>
     </div>
-    <p class="text-xs parrafo underline mt-64">Leer Términos y Condiciones</p>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'DatosEmpresa9',
+  name: 'DatosEmpres10',
   data() {
     return {
       active: 'false',
@@ -57,10 +59,28 @@ export default {
   margin-top: 30px;
   margin-bottom: 40px;
 }
+.div-label {
+  background-color: white;
+  left: 68px;
+  top: 7px;
+}
+.a {
+  color: white;
+}
+.moveLabel {
+  margin-top: -21px;
+  transition: margin-top 1s;
+}
 button {
   outline: none;
 }
-a {
-  color: white;
+input {
+  width: 300px;
+}
+.button-sex {
+  width: 300px;
+}
+.div-pass {
+  background-color: #fef49c;
 }
 </style>

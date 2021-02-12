@@ -55,6 +55,20 @@
           <input v-model="auto.Blindado" class="input-hijos" type="text" />
         </div>
       </article>
+      <article class="flex items-center">
+        <div class="w-1/3 items-center">
+          <label class="label-mini" for="">Cap. pasajeros</label>
+          <input v-model="auto.pasajeros" class="input-hijos" type="text" />
+        </div>
+        <div class="w-1/3 items-center">
+          <label class="label-mini" for="">Cap. de carga</label>
+          <input v-model="auto.carga" class="input-hijos" type="text" />
+        </div>
+        <div class="w-1/3 items-center">
+          <label class="label-mini" for="">Final de placa</label>
+          <input v-model="auto.placa" class="input-hijos" type="text" />
+        </div>
+      </article>
     </form>
   </section>
 </template>
@@ -77,6 +91,9 @@ export default {
         Peso: '2200',
         Ejes: '2',
         Blindado: 'No',
+        pasajeros: '5',
+        carga: '-',
+        placa: '3',
       },
     }
   },
@@ -108,6 +125,9 @@ label {
   font-size: 16px;
   color: #8d8c8c;
   margin-bottom: 5px;
+}
+.label-mini {
+  font-size: 14px;
 }
 .input-form {
   width: 339px;

@@ -1,10 +1,5 @@
 <template>
   <section class="">
-    <aside class="w-full flex justify-start my-4 ml-2">
-      <nuxt-link to="/register">
-        <IconArrow />
-      </nuxt-link>
-    </aside>
     <Nuxt />
   </section>
 </template>
@@ -32,9 +27,6 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
-.icon {
-  fill: #ed1a3b;
-}
 .icono {
   margin-top: 60px;
   margin-bottom: 60px;

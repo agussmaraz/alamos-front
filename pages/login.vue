@@ -10,9 +10,21 @@
       Álamos
     </header>
     <div class="flex flex-col w-64 m-auto relative">
-      <input type="number" name="" placeholder="Número de Cédula" />
+      <input
+        :value="data.cedula"
+        type="number"
+        name=""
+        placeholder="Número de Cédula"
+        @input="(event) => inputValue(event, 'cedula')"
+      />
       <IconDni class="w-6 h-6 absolute dni" />
-      <input type="password" placeholder="Contraseña" class="mt-8" />
+      <input
+        :value="data.contraseña"
+        type="password"
+        placeholder="Contraseña"
+        class="mt-8"
+        @input="(event) => inputValue(event, 'contraseña')"
+      />
       <IconKey class="w-6 h-5 absolute key" />
       <p class="text-center text-sm mt-8">¿Olvidaste tu contraseña?</p>
     </div>
@@ -23,7 +35,22 @@
 </template>
 
 <script>
-export default {}
+import { mapState, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      data: (state) => state.login.datos,
+    }),
+  },
+  methods: {
+    ...mapActions({
+      setData: 'login/setData',
+    }),
+    inputValue(event, campo) {
+      this.setData({ [campo]: event.target.value })
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -43,10 +70,12 @@ section {
 input {
   height: 40px;
   border-radius: 20px;
+  outline: none;
+  padding-left: 60px;
 }
 ::placeholder {
   font-family: 'Nunito', sans-serif;
-  text-align: center;
+  /* text-align: center; */
 }
 .dni {
   top: 9px;

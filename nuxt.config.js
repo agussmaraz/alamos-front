@@ -1,6 +1,6 @@
 export default {
   server: {
-    host: '192.168.0.10',
+    host: process.env.HOST,
   },
   /*
    ** Nuxt rendering mode

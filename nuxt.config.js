@@ -70,4 +70,7 @@ export default {
      ** See https://nuxtjs.org/api/configuration-build/
      */
     build: {},
+    env: {
+        GRINGOTTS_URL: process.env.GRINGOTTS_URL,
+    },
 };

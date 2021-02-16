@@ -1,22 +1,12 @@
 <template>
     <div class="flex flex-col items-center md:ml-2 lg:mr-8">
         <div class="perfil__edit-photo flex flex-col items-center md:justify-center" :class="{ 'perfil__edit-photo-large': camera }">
-            <div v-if="!camera" class="perfil__new-image flex flex-col items-center justify-center cursor-pointer" @click="triggerUpload">
-                <div>
-                    <!-- <IconImagen class="icon" /> -->
-                </div>
-                <div class="mt-3 text-center texto">
-                    <h2 class="text-base texto">Sube una nueva imagen</h2>
-                    <p>PNG, JPG, GIF hasta 10MB</p>
-                    <input ref="profilePic" type="file" accept="image/*" style="display: none" @change="pickFile('profilePic')" />
-                </div>
-            </div>
-            <hr />
             <div class="perfil__new-image flex flex-col justify-center items-center pb-6 cursor-pointer relative" :class="{ 'perfil__edit-image-large': camera }" @click="showCamera">
                 <div ref="camera" class="profile--camera max-w-full max-h-full absolute flex flex-col items-center mb-8">
-                    <video ref="video" playsinline autoplay class="pb-4"></video>
-                    <button v-if="camera" id="startbutton" @click="takePic">Sacar foto</button>
+                    <video v-show="camera" ref="video" playsinline autoplay class="pb-4"></video>
+                    <button v-if="camera && preview_image === null" id="startbutton" @click="takePic">Sacar foto</button>
                     <canvas ref="canvas" class="hidden"></canvas>
+                    <img v-show="preview_image !== null" class="absolute top-0 left-0" :src="preview_image" alt="" />
                 </div>
                 <input ref="takePic" type="file" accept="image/*" capture="camera" style="display: none" @change="showCamera" />
 
@@ -37,7 +27,7 @@
 
 <script>
     import resizeImage from 'smart-img-resize';
-    import { mapActions } from 'vuex';
+    import Axios from 'axios';
 
     export default {
         name: 'PerfilForm',
@@ -45,6 +35,10 @@
             updatePhoto: {
                 type: Function,
                 default: () => {},
+            },
+            pictureName: {
+                type: String,
+                default: '',
             },
         },
         data() {
@@ -54,28 +48,30 @@
             };
         },
         beforeDestroy() {
-            if (window.stream && window.stream.getTracks()[0]) {
-                window.stream.getTracks()[0].stop();
-            }
+            this.closeVideoSource();
         },
         methods: {
-            ...mapActions({
-                confirmUpload: 'auth/updateProfilePic',
-            }),
+            closeVideoSource() {
+                if (window.stream && window.stream.getTracks()[0]) {
+                    window.stream.getTracks()[0].stop();
+                }
+            },
             async sendPhoto() {
                 try {
-                    await this.confirmUpload(this.preview_image);
-                    this.showPhotoInputs(false);
+                    const picture_data = await this.confirmUpload(this.preview_image);
+                    console.log(picture_data);
+                    // Si la foto se subió, acá cambiás de componente
                 } catch (error) {
                     console.log('Error al subir foto');
                 }
             },
             triggerCancel() {
-                if (window.stream && window.stream.getTracks()[0]) {
-                    window.stream.getTracks()[0].stop();
+                if (this.preview_image !== null) {
+                    this.preview_image = null;
+                } else {
+                    this.closeVideoSource();
+                    this.camera = false;
                 }
-                this.camera = false;
-                this.showPhotoInputs(false);
             },
             triggerUpload() {
                 this.$refs.profilePic.click();
@@ -136,6 +132,9 @@
                 const image = canvas.toDataURL('image/jpeg');
                 this.updatePhoto(image);
                 this.preview_image = image;
+            },
+            confirmUpload(b64img) {
+                return Axios.post(process.env.GRINGOTTS_URL + 'img', { toUpload: b64img, path: 'profile/', name: this.pictureName });
             },
         },
     };

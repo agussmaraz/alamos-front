@@ -1,45 +1,40 @@
 <template>
-  <section class="flex flex-col items-center text-center">
-    <header class="flex text-rojo font-bold items-center text-2xl">
-      <IconLogo class="w-10 h-10 icon mr-2" />
-      Álamos
-    </header>
-    <article>
-      <IconPageTwo class="icono ml-2" />
-      <h1 class="text-rojo text-2xl">Tu peritaje a un clic</h1>
-      <div class="div-parrafo">
-        <span class="text-sm parrafo">
-          Solicita la revisión tecnomecánica con un sólo
-        </span>
-        <span class="text-sm"> click. </span>
-        <span class="parrafo text-sm">
-          Accede a centros de diagnóstico automotriz ubicados en tu
-          ciudad.</span
-        >
-      </div>
-    </article>
-  </section>
+    <section class="flex flex-col items-center text-center">
+        <header class="flex text-rojo font-bold items-center text-2xl">
+            <IconLogo class="w-10 h-10 icon mr-2" />
+            Álamos
+        </header>
+        <article>
+            <IconPageTwo class="icono ml-2" />
+            <h1 class="text-rojo text-2xl">Tu peritaje a un clic</h1>
+            <div class="div-parrafo">
+                <span class="text-sm parrafo"> Solicita la revisión tecnomecánica con un sólo </span>
+                <span class="text-sm"> click. </span>
+                <span class="parrafo text-sm"> Accede a centros de diagnóstico automotriz ubicados en tu ciudad.</span>
+            </div>
+        </article>
+    </section>
 </template>
 <script>
-export default {
-  name: 'PageFour',
-}
+    export default {
+        name: 'PageFour',
+    };
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
-.icon {
-  fill: #ed1a3b;
-}
-.icono {
-  margin: 60px auto;
-}
-.parrafo {
-  font-family: 'Montserrat', sans-serif;
-}
-.div-parrafo {
-  width: 250px;
-  margin-top: 30px;
-}
+    .icon {
+        fill: #ed1a3b;
+    }
+    .icono {
+        margin: 60px auto;
+    }
+    .parrafo {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .div-parrafo {
+        width: 250px;
+        margin-top: 30px;
+    }
 </style>

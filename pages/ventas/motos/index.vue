@@ -2,7 +2,7 @@
     <section class="caja-madre">
         <nav class="flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/home">
+                <nuxt-link to="/ventas">
                     <IconArrow class="arrow" />
                 </nuxt-link>
             </div>

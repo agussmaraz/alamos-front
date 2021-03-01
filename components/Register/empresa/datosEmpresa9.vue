@@ -9,7 +9,7 @@
         <div class="parrafo text-sm div-parrafo">
             <p>
                 ¡Listo! Ya puedes subir tus vehículos al marketplace y crear tu
-                <a href=""> TIENDA VIRTUAL </a>
+                <nuxt-link to="/ventas" class="a"> TIENDA VIRTUAL </nuxt-link>
                 para alcanzar más clientes.
             </p>
         </div>
@@ -18,7 +18,7 @@
 
 <script>
     export default {
-        name: 'DatosEmpres10',
+        name: 'DatosEmpres9',
         data() {
             return {
                 active: 'false',
@@ -65,7 +65,8 @@
         top: 7px;
     }
     .a {
-        color: white;
+        color: rgb(74, 136, 252);
+        text-decoration: underline;
     }
     .moveLabel {
         margin-top: -21px;

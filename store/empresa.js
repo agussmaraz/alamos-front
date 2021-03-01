@@ -155,7 +155,7 @@ export const actions = {
     setData({ commit }, data) {
         commit('SET_DATA', data);
     },
-    register({ commit }, data) {
+    register({ dispatch }, data) {
         const objeto = {};
         objeto.id_type = 'nit';
         objeto.id_number = data.nit;
@@ -175,8 +175,7 @@ export const actions = {
         objeto.city = data.ciudad;
         objeto.address = data.direccion;
         objeto.status = 0;
-        console.log(objeto);
-        axios.post('https://auth.alamosautos.co/users/register', objeto).then((res) => console.log(res));
+        axios.post('https://auth.alamosautos.co/users/register', objeto).then((user) => dispatch('auth/setUser', user, { root: true }));
     },
     setUser({ commit }, data) {
         commit('SET_USER', data);

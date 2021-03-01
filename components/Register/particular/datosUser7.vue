@@ -2,22 +2,6 @@
     <section class="flex flex-col items-center text-center">
         <span class="flex text-rojo text-2xl mt-4 header text-center"> Ingresa tu ubicación </span>
         <section class="w-full">
-            <article class="relative mt-20">
-                <input
-                    :value="data.direccion"
-                    type="text"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
-                    :class="{ inputError: errores.direccion && errores.direccion.error }"
-                    @click="activate('direccion')"
-                    @focus="activate('direccion')"
-                    @input="(event) => inputValue(event, 'direccion')"
-                />
-                <IconError v-if="errores.direccion" class="w-6 h-6 absolute icono-error" />
-
-                <div class="div-label absolute px-2" :class="active === 'direccion' || data.direccion != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('direccion')">Dirección</label>
-                </div>
-            </article>
             <article class="relative my-12">
                 <input :value="data.ciudad" type="text" class="border border-rojo rounded-md w-64 h-12 outline-none pl-4" :class="{ inputError: errores.ciudad && errores.ciudad.error }" @click="activate('ciudad')" @focus="activate('ciudad')" @input="(event) => inputValue(event, 'ciudad')" />
                 <IconError v-if="errores.ciudad" class="w-6 h-6 absolute icono-error" />
@@ -99,7 +83,7 @@
         right: 71px;
     }
     .inputError {
-        border: solid #ed1ad8 2px;
+        border: solid #ed1ad8 3px;
         @apply rounded-md;
     }
     .div-parrafo {

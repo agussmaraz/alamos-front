@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from 'axios';
 import validaciones from '../services/validaciones';
 
 export const state = () => {
@@ -24,6 +25,7 @@ export const state = () => {
             identificacion: '',
         },
         errores: {},
+        usuario: '',
     };
 };
 export const getters = {};
@@ -116,16 +118,10 @@ export const actions = {
         return true;
     },
     validateComponente5({ state, dispatch }) {
-        dispatch('clearErrors', ['direccion', 'ciudad', 'localidad']);
+        dispatch('clearErrors', ['ciudad', 'localidad']);
 
-        const direccion = validaciones.direccionParticular(state.datos.direccion);
         const ciudad = validaciones.ciudadParticular(state.datos.ciudad);
         const localidad = validaciones.localidadParticular(state.datos.localidad);
-
-        if (direccion !== true) {
-            dispatch('setError', { name: 'direccion', error: direccion });
-            return false;
-        }
 
         if (ciudad !== true) {
             dispatch('setError', { name: 'ciudad', error: ciudad });
@@ -137,8 +133,55 @@ export const actions = {
         }
         return true;
     },
+    validateComponente6({ state, dispatch }) {
+        dispatch('clearErrors', ['contraseña', 'repetirContraseña']);
+
+        const contraseñaValidacion = validaciones.contraseñaParticular(state.datos.contraseña);
+        const repetirContraseñaValidacion = validaciones.repetirContraseñaParticular(state.datos.contraseña, state.datos.repetirContraseña);
+
+        if (contraseñaValidacion !== true) {
+            dispatch('setError', { name: 'contraseña', error: contraseñaValidacion });
+            return false;
+        }
+
+        if (repetirContraseñaValidacion !== true) {
+            dispatch('setError', {
+                name: 'repetirContraseña',
+                error: repetirContraseñaValidacion,
+            });
+            return false;
+        }
+
+        return true;
+    },
+    register({ state, dispatch }, data) {
+        const objeto = {};
+        objeto.id_type = 'cedula';
+        objeto.id_number = data.cedula;
+        objeto.id_sent = false;
+        objeto.first_name = data.nombre;
+        objeto.last_name = data.apellido;
+        objeto.business_name = '';
+        objeto.birthday = data.fecha;
+        objeto.gender = data.genero;
+        objeto.phone_mobile = data.celular;
+        objeto.phone_land = data.telefono;
+        objeto.email = data.correo;
+        objeto.password = data.contraseña;
+        objeto.role = 10;
+        objeto.country = 'CO';
+        objeto.region = data.localidad;
+        objeto.city = data.ciudad;
+        objeto.address = '';
+        objeto.status = 0;
+        axios.post('https://auth.alamosautos.co/users/register', objeto).then((res) => dispatch('auth/setUser', res.data.data, { root: true }));
+    },
     setError({ commit }, error) {
         commit('SET_ERROR', error);
+    },
+    setUser({ commit }, data) {
+        console.log(data);
+        commit('SET_USER', data);
     },
     clearErrors({ commit }, errores = null) {
         commit('CLEAR_ERRORS', errores);
@@ -169,5 +212,8 @@ export const mutations = {
     },
     SET_ERROR(state, error) {
         Vue.set(state.errores, error.name, error);
+    },
+    SET_USER(state, data) {
+        state.usuario = data;
     },
 };

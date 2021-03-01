@@ -7,13 +7,14 @@
             <br />
             <p>Te enviamos el email a:</p>
         </div>
-        <p class="text-rojo font-bold text-lg">concesionario@empresa.com</p>
+        <p class="text-rojo font-bold text-lg">{{ user.email }}</p>
         <button class="button-reenviar p-2 rounded-md parrafo w-32 shadow-md mt-8">Reenviar</button>
-        <p class="text-xs parrafo underline mt-24">¿No has recibido el email?</p>
+        <p class="text-xs parrafo underline mt-24 cursor-pointer" @click="openModal({ modal: 'correo' })">¿No has recibido el email?</p>
     </section>
 </template>
 
 <script>
+    import { mapState, mapActions } from 'vuex';
     export default {
         name: 'Page4',
         data() {
@@ -22,7 +23,15 @@
                 buttonGenero: '',
             };
         },
+        computed: {
+            ...mapState({
+                user: (state) => state.particular.usuario,
+            }),
+        },
         methods: {
+            ...mapActions({
+                openModal: 'modal/openModal',
+            }),
             activate(id) {
                 this.active = id;
             },

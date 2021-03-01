@@ -36,7 +36,7 @@
 <style scoped>
     .search {
         top: 19px;
-        left: 100px;
+        left: 98px;
         fill: #747474;
     }
     .left {

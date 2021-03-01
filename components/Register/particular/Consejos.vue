@@ -2,10 +2,12 @@
     <section class="caja-padre">
         <section class="paginacion">
             <VueSlickCarousel :dots="true" :arrows="false">
-                <div><Consejo1 /></div>
-                <div><Consejo2 /></div>
-                <div><Consejo3 /></div>
-                <div><Consejo4 /></div>
+                <template class="custom-dot">
+                    <div><Consejo1 /></div>
+                    <div><Consejo2 /></div>
+                    <div><Consejo3 /></div>
+                    <div><Consejo4 /></div>
+                </template>
             </VueSlickCarousel>
         </section>
     </section>
@@ -34,5 +36,9 @@
     }
     .slick-dots {
         background-color: white;
+        bottom: 8px !important;
+    }
+    .custom-dot {
+        color: red !important;
     }
 </style>

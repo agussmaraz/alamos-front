@@ -38,7 +38,7 @@
                 />
             </div>
         </article>
-        <article class="caja-componente mb-40">
+        <article class="caja-componente mb-40 h-screen">
             <!-- <Auto /> -->
             <transition name="slide-fade">
                 <component :is="componente_actual" class="mb-20" />

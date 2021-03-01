@@ -2,44 +2,44 @@
     <section class="">
         <article class="flex flex-row flex-wrap justify-around m-auto w-full">
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Modelo</h2>
                 <p>{{ auto.Modelo }}</p>
+                <h2>Modelo</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Cilindraje</h2>
                 <p>3640 cc</p>
+                <h2>Cilindraje</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Final de placa</h2>
                 <p>3</p>
+                <h2>Final de placa</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Combustible</h2>
                 <p>{{ auto.Combustible }}</p>
+                <h2>Combustible</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Kilometraje</h2>
                 <p>{{ auto.km }}</p>
+                <h2>Kilometraje</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Caja</h2>
                 <p>Automática</p>
+                <h2>Caja</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Puertas</h2>
                 <p>{{ auto.Puertas }}</p>
+                <h2>Puertas</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Dirección</h2>
                 <p>Hadráulica</p>
+                <h2>Dirección</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Color</h2>
                 <p>{{ auto.Color }}</p>
+                <h2>Color</h2>
             </div>
             <div class="flex flex-col w-2/5 mb-3">
-                <h2>Transmisión</h2>
                 <p>4x4</p>
+                <h2>Transmisión</h2>
             </div>
         </article>
         <div class="w-full flex justify-center mt-5">
@@ -83,9 +83,12 @@
 </script>
 
 <style scoped>
-    h2 {
-        font-size: 16px;
+    p {
+        font-size: 14px;
         font-weight: bold;
+    }
+    h2 {
+        font-size: 12px;
     }
     .button {
         background-color: white;

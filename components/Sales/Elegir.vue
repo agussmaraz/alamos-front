@@ -1,16 +1,28 @@
 <template>
-    <section class="caja-padre flex flex-col items-center">
+    <section class="caja-padre flex flex-col items-center h-screen">
         <h1 class="text-xl font-bold mt-5">¿Qué quieres vender?</h1>
         <section class="mt-10">
-            <nuxt-link to="/ventas/automoviles" class="flex caja-opcion items-center justify-around">
+            <nuxt-link v-if="usuario && usuario.role === 20" to="/ventas/seleccion" class="flex caja-opcion items-center justify-around">
                 <IconCarSuv class="w-20 icon" />
                 <p class="div-p">Carro</p>
             </nuxt-link>
-            <nuxt-link to="/ventas/motos" class="flex caja-opcion1 items-center justify-around mt-10">
+            <nuxt-link v-else to="/ventas/automoviles" class="flex caja-opcion items-center justify-around">
+                <IconCarSuv class="w-20 icon" />
+                <p class="div-p">Carro</p>
+            </nuxt-link>
+            <nuxt-link v-if="usuario && usuario.role === 20" to="/ventas/seleccion" class="flex caja-opcion1 items-center justify-around mt-10">
                 <IconMoto class="w-16 icon" />
                 <p class="div-p">Moto</p>
             </nuxt-link>
-            <nuxt-link to="/ventas/otros" class="flex caja-opcion2 items-center justify-around mt-10">
+            <nuxt-link v-else to="/ventas/motos" class="flex caja-opcion1 items-center justify-around mt-10">
+                <IconMoto class="w-16 icon" />
+                <p class="div-p">Moto</p>
+            </nuxt-link>
+            <nuxt-link v-if="usuario && usuario.role === 20" to="/ventas/seleccion" class="flex caja-opcion2 items-center justify-around mt-10">
+                <IconElipsis class="w-12 icon" />
+                <p class="div-p">Otro</p>
+            </nuxt-link>
+            <nuxt-link v-else to="/ventas/otros" class="flex caja-opcion2 items-center justify-around mt-10">
                 <IconElipsis class="w-12 icon" />
                 <p class="div-p">Otro</p>
             </nuxt-link>
@@ -19,8 +31,14 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex';
     export default {
         name: 'Elegir',
+        computed: {
+            ...mapState({
+                usuario: (state) => state.auth.usuario,
+            }),
+        },
     };
 </script>
 

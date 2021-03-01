@@ -12,6 +12,18 @@
                 </div>
             </div>
         </article>
+        <button v-if="user && user.role == 20" class="button-ver my-3">Ver stock de vehiculos</button>
+        <div v-if="user && user.role == 20">
+            <p class="font-bold mt-5 mb-1">Contacto</p>
+            <hr />
+            <article>
+                <div class="flex items-center mt-4">
+                    <IconUserCircle />
+                    <p class="font-bold ml-2">Asesor Comercial</p>
+                </div>
+                <p class="ml-10">Martín Fonseca</p>
+            </article>
+        </div>
         <div class="caja-video flex items-center mt-8">
             <IconVideo class="icon-camara mr-3" />
             <p class="text-rojo">Agendar videollamada</p>
@@ -27,16 +39,23 @@
                 <p class="parrafo text-sm font-bold ml-3">Teléfono de contacto</p>
             </div>
         </article>
-        <article class="mt-8 ml-2">
+        <article class="mt-10 ml-2">
             <p class="font-bold text-lg parrafo2">Notas</p>
+            <hr />
             <p class="parrafo2 mt-3">Contactarme entre las 9 am. a 7 pm.</p>
         </article>
     </section>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
     export default {
         name: 'Vendedor',
+        computed: {
+            ...mapState({
+                user: (state) => state.auth.usuario,
+            }),
+        },
     };
 </script>
 
@@ -58,6 +77,9 @@
         bottom: 4px;
         font-size: 60px;
         color: white;
+    }
+    hr {
+        color: #c4c4c4;
     }
     .icon-arrow {
         transform: rotate(270deg);
@@ -84,5 +106,16 @@
     }
     .parrafo2 {
         color: #353535;
+    }
+    .button-ver {
+        background-color: #706e71;
+        border-radius: 8px;
+        width: 233px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
     }
 </style>

@@ -9,10 +9,10 @@
             </VueSlickCarousel>
         </section>
         <div class="text-rojo text-lg mt-16 font-semibold text-center mb-10">
-            <nuxt-link to="authModal"> Omitir >> </nuxt-link>
+            <nuxt-link to="login"> Omitir >> </nuxt-link>
         </div>
         <div class="bg-rojo px-2 flex justify-around rounded-2xl m-auto div-button shadow-lg w-20">
-            <nuxt-link class="a" to="authModal">INICIAR SESION</nuxt-link>
+            <nuxt-link class="a" to="login">INICIAR SESION</nuxt-link>
             <nuxt-link to="register/" class="a-border">REGISTRATE</nuxt-link>
         </div>
     </div>

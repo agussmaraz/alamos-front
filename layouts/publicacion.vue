@@ -1,10 +1,10 @@
 <template>
-    <section class="caja-madre">
+    <section class="caja-madre h-screen">
         <nav class="nav flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/home">
+                <div @click="back">
                     <IconArrow class="arrow" />
-                </nuxt-link>
+                </div>
             </div>
             <div class="font-bold">Publicar vehiculo</div>
             <div class="font-bold text-xs mt-1">Cancelar</div>
@@ -51,6 +51,13 @@
             };
         },
         methods: {
+            back() {
+                if (this.componente_actual === 'Form1') {
+                    this.componente_actual = 'Form';
+                } else if (this.componente_actual === 'Caracteristicas') {
+                    this.componente_actual = 'Form1';
+                }
+            },
             changePage() {
                 // if (this.componente_actual === 'Placa') {
                 // this.componente_actual = 'Form'

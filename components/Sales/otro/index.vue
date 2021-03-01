@@ -1,5 +1,5 @@
 <template>
-    <section class="flex flex-col items-center">
+    <section class="flex flex-col items-center h-screen">
         <h1 class="my-5">Tu Placa</h1>
         <p class="mb-5 parrafo">Ingresa la placa de tu vehículo</p>
         <article class="placa flex items-center justify-around border border-2-black relative">

@@ -62,7 +62,7 @@
         right: 71px;
     }
     .inputError {
-        border: solid #ed1ad8 2px;
+        border: solid #ed1ad8 3px;
         @apply rounded-md;
     }
     .icono {

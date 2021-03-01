@@ -1,10 +1,15 @@
 <template>
     <section class="flex flex-col items-center">
         <h1 class="my-5">Sube las fotos de tu carro</h1>
+        <div class="my-3 parrafo">
+            <p>Sigue el <strong> orden de las fotos </strong>guía para que tu publicación no pierda exposición.</p>
+        </div>
         <article class="w-4/5 text-left">
-            <h3 class="mb-5">Exterior</h3>
+            <h3 class="mb-3">Exterior</h3>
+            <hr class="mb-8" />
             <article class="flex flex-wrap flex-row justify-around">
                 <div class="div-exterior relative" @click="openModal({ modal: 'imperfecciones' })">
+                    <aside class="py-1 px-3 portada absolute">Portada</aside>
                     <img src="~/assets/img/Car-frente.svg" alt="" class="foto1" />
                     <IconAddImage class="w-6 h-6 absolute icon-add" />
                 </div>
@@ -31,7 +36,8 @@
             </article>
         </article>
         <article class="w-4/5 text-left mt-8">
-            <h3 class="mb-5">Interior</h3>
+            <h3 class="mb-3">Interior</h3>
+            <hr class="mb-4" />
             <article class="flex flex-wrap flex-row justify-around">
                 <div class="div-interior1 relative" @click="openModal({ modal: 'imperfecciones' })">
                     <div class="title-image"></div>
@@ -90,6 +96,21 @@
 </script>
 
 <style scoped>
+    .portada {
+        background-color: #ff5670;
+        color: white;
+        height: 27px;
+        width: 102px;
+        text-align: center;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        top: -22px;
+        font-weight: bold;
+    }
+    .parrafo {
+        width: 330px;
+        text-align: center;
+    }
     .icon-add {
         top: 4px;
         right: 4px;
@@ -103,6 +124,9 @@
         color: #444343;
         font-size: 18px;
         font-weight: bold;
+    }
+    hr {
+        color: #c4c4c4;
     }
     .p1 {
         right: 25px;

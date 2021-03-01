@@ -25,7 +25,7 @@
                 <IconComments class="w-12 h-10 mt-2 m-auto" />
             </div>
         </article>
-        <article>
+        <article class="h-screen">
             <Elegir />
             <!-- <component :is="componente_actual" /> -->
         </article>

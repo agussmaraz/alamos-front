@@ -5,6 +5,7 @@ export const state = () => {
             motoImperfecciones: false,
             otroImperfecciones: false,
             documento: false,
+            correo: false,
         },
     };
 };

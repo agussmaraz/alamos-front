@@ -15,7 +15,7 @@
             <p class="text-center text-sm mt-8">¿Olvidaste tu contraseña?</p>
         </div>
         <div class="bg-rojo w-64 py-2 text-center rounded-3xl shadow-lg m-0 m-auto">
-            <a class="a" href="">INICIAR SESIÓN</a>
+            <button class="a" href="" @click.prevent="loginUser">INICIAR SESIÓN</button>
         </div>
     </section>
 </template>
@@ -25,15 +25,20 @@
     export default {
         computed: {
             ...mapState({
-                data: (state) => state.login.datos,
+                data: (state) => state.auth.datos,
             }),
         },
         methods: {
             ...mapActions({
-                setData: 'login/setData',
+                setData: 'auth/setData',
+                login: 'auth/login',
             }),
             inputValue(event, campo) {
                 this.setData({ [campo]: event.target.value });
+            },
+            loginUser() {
+                this.login(this.data);
+                this.$router.push('/home');
             },
         },
     };

@@ -92,6 +92,38 @@ export const validateLocalidadParticular = (localidad) => {
     return true;
 };
 
+export const validateContraseñaParticular = (contraseña) => {
+    if (!contraseña || contraseña === '') {
+        return 'La contraseña no puede estar vacía';
+    }
+    if (contraseña.length < 8) {
+        return 'La contraseña tiene que tener un minimo de 8 caracteres';
+    }
+    if (contraseña.length > 10) {
+        return 'La contraseña tiene que tener un maximo de 10 caracteres';
+    }
+    const is_valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(contraseña);
+    if (!is_valid) {
+        return 'Necesita una mayúscula o un número';
+    }
+
+    return true;
+};
+
+export const validateRepetirContraseñaParticular = (contraseña, contraseña2) => {
+    if (contraseña !== contraseña2) {
+        return 'Las contraseñas no son iguales';
+    }
+    if (contraseña.length < 8) {
+        return 'La contraseña tiene que tener un minimo de 8 caracteres';
+    }
+    if (contraseña.length > 10) {
+        return 'La contraseña tiene que tener un maximo de 10 caracteres';
+    }
+
+    return true;
+};
+
 export const validateEmail = (email) => {
     if (!email || email === '') {
         return 'El email no puede estar vacío';
@@ -170,6 +202,16 @@ export const validateContraseña = (contraseña) => {
     if (!contraseña || contraseña === '') {
         return 'La contraseña no puede estar vacía';
     }
+    if (contraseña.length < 8) {
+        return 'La contraseña tiene que tener un minimo de 8 caracteres';
+    }
+    if (contraseña.length > 10) {
+        return 'La contraseña tiene que tener un maximo de 10 caracteres';
+    }
+    const is_valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(contraseña);
+    if (!is_valid) {
+        return 'Necesita una mayúscula o un número';
+    }
 
     return true;
 };
@@ -207,4 +249,6 @@ export default {
     direccionParticular: validateDireccionParticular,
     ciudadParticular: validateCiudadParticular,
     localidadParticular: validateLocalidadParticular,
+    contraseñaParticular: validateContraseñaParticular,
+    repetirContraseñaParticular: validateRepetirContraseñaParticular,
 };

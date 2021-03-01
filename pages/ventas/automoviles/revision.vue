@@ -14,7 +14,8 @@
         </nav>
         <article v-if="!detalles" class="div-elegir flex items-center justify-around options w-full pt-16 z-10">
             <p class="font-bold w-1/3 text-center pb-2" :class="componente_actual === 'Vehiculo' ? 'subrayado' : null" @click="componente_actual = 'Vehiculo'">Vehículo</p>
-            <p class="font-bold w-1/3 text-center pb-2" :class="componente_actual === 'Documentacion' ? 'subrayado' : null" @click="componente_actual = 'Documentacion'">Documentación</p>
+            <p v-if="user && user.role !== 20" class="font-bold w-1/3 text-center pb-2" :class="componente_actual === 'Documentacion' ? 'subrayado' : null" @click="componente_actual = 'Documentacion'">Documentación</p>
+            <p v-if="user && user.role == 20" class="font-bold w-1/3 text-center pb-2" :class="componente_actual === 'PrecioReferencia' ? 'subrayado' : null" @click="componente_actual = 'PrecioReferencia'">Precio referencia</p>
             <p class="font-bold w-1/3 text-center pb-2" :class="componente_actual === 'Vendedor' ? 'subrayado' : null" @click="componente_actual = 'Vendedor'">Vendedor</p>
         </article>
         <DetallesFicha v-if="detalles" />
@@ -37,6 +38,7 @@
             Vehiculo: () => import('@/components/Sales/auto/Vehiculo'),
             Documentacion: () => import('@/components/Sales/auto/Documentacion'),
             Vendedor: () => import('@/components/Sales/auto/Vendedor'),
+            PrecioReferencia: () => import('@/components/Sales/auto/PrecioReferencia'),
         },
         data() {
             return {
@@ -46,6 +48,7 @@
         computed: {
             ...mapState({
                 detalles: (state) => state.detalles.detalles,
+                user: (state) => state.auth.usuario,
             }),
         },
         methods: {

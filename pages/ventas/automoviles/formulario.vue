@@ -2,12 +2,12 @@
     <section class="caja-madre">
         <nav class="nav flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/home">
+                <div @click="back">
                     <IconArrow class="arrow" />
-                </nuxt-link>
+                </div>
             </div>
             <div class="font-bold">Publicar vehiculo</div>
-            <div class="font-bold text-xs mt-1">Cancelar</div>
+            <nuxt-link to="/ventas/automoviles" class="font-bold text-xs mt-1">Cancelar</nuxt-link>
         </nav>
         <article class="caja-pasos flex justify-between mt-5 px-8 py-4">
             <div class="div-icon">
@@ -51,9 +51,17 @@
             };
         },
         methods: {
+            back() {
+                if (this.componente_actual === 'Form') {
+                    this.$router.push('/ventas/automoviles/');
+                }
+                if (this.componente_actual === 'Form1') {
+                    this.componente_actual = 'Form';
+                } else if (this.componente_actual === 'Caracteristicas') {
+                    this.componente_actual = 'Form1';
+                }
+            },
             changePage() {
-                // if (this.componente_actual === 'Placa') {
-                // this.componente_actual = 'Form'
                 if (this.componente_actual === 'Form') {
                     this.componente_actual = 'Form1';
                 } else if (this.componente_actual === 'Form1') {

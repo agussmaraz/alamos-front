@@ -2,9 +2,9 @@
     <section class="caja-madre">
         <nav class="nav flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/home">
-                    <IconArrow class="arrow" />
-                </nuxt-link>
+                <div @click="back">
+                    <IconArrow class="arrow cursor-pointer" />
+                </div>
             </div>
             <div class="font-bold">Publicar vehiculo</div>
             <div class="font-bold text-xs mt-1">Cancelar</div>
@@ -51,9 +51,17 @@
             };
         },
         methods: {
+            back() {
+                if (this.componente_actual === 'MotoForm') {
+                    this.$router.push('/ventas/motos/');
+                }
+                if (this.componente_actual === 'MotoForm1') {
+                    this.componente_actual = 'MotoForm';
+                } else if (this.componente_actual === 'MotoCaracteristicas') {
+                    this.componente_actual = 'MotoForm1';
+                }
+            },
             changePage() {
-                // if (this.componente_actual === 'Placa') {
-                // this.componente_actual = 'Form'
                 if (this.componente_actual === 'MotoForm') {
                     this.componente_actual = 'MotoForm1';
                 } else if (this.componente_actual === 'MotoForm1') {

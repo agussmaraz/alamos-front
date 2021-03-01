@@ -66,12 +66,8 @@
                     this.componente_actual = 'DatosUser1';
                 } else if (this.componente_actual === 'DatosUser3') {
                     this.componente_actual = 'DatosUser2';
-                } else if (this.componente_actual === 'DatosUser4') {
-                    this.componente_actual = 'DatosUser3';
-                } else if (this.componente_actual === 'DatosUser5') {
-                    this.componente_actual = 'DatosUser4';
                 } else if (this.componente_actual === 'DatosUser6') {
-                    this.componente_actual = 'DatosUser5';
+                    this.componente_actual = 'DatosUser3';
                 } else if (this.componente_actual === 'DatosUser7') {
                     this.componente_actual = 'DatosUser6';
                 } else if (this.componente_actual === 'DatosUser8') {

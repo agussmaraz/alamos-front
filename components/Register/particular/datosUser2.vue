@@ -28,9 +28,9 @@
             </article>
             <div class="relative">
                 <article class="flex justify-around items-center border border-rojo rounded-md h-16 m-auto button-sex" :class="{ inputError: errores.genero && errores.genero.error }">
-                    <button class="text-xs h-full w-full outline-none" :class="buttonGenero === 'masculino' ? 'activateButton' : false" @click="setGender('masculino')">Masculino</button>
-                    <button class="text-xs h-full w-full outline-none button-medio" :class="buttonGenero === 'femenino' ? 'activateButton' : false" @click="setGender('femenino')">Femenino</button>
-                    <button class="text-xs h-full w-full outline-none" :class="buttonGenero === 'otro' ? 'activateButton' : false" @click="setGender('otro')">Otros</button>
+                    <button class="text-xs h-full w-full outline-none" :class="buttonGenero === 'M' ? 'activateButton' : false" @click="setGender('M')">Masculino</button>
+                    <button class="text-xs h-full w-full outline-none button-medio" :class="buttonGenero === 'F' ? 'activateButton' : false" @click="setGender('F')">Femenino</button>
+                    <button class="text-xs h-full w-full outline-none" :class="buttonGenero === 'O' ? 'activateButton' : false" @click="setGender('O')">Otros</button>
                 </article>
                 <IconError v-if="errores.genero" class="w-6 h-6 absolute icono-error2" />
             </div>
@@ -89,15 +89,15 @@
         margin-left: 80px;
     }
     .icono-error {
-        top: 21px;
-        right: 22px;
+        top: 11px;
+        right: 57px;
     }
     .icono-error2 {
-        top: 12px;
-        right: 71px;
+        top: 19px;
+        right: 16px;
     }
     .inputError {
-        border: solid #ed1ad8 2px;
+        border: solid #ed1ad8 3px;
         @apply rounded-md;
     }
     .parrafo {

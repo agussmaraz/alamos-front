@@ -1,8 +1,5 @@
 <template>
     <section>
-        <h1 v-if="user" class="bold text-lg">
-            Bienvenido <strong> {{ user.data.business_name }}</strong>
-        </h1>
         <Acciones />
         <h1>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, rem! Maiores amet reprehenderit aspernatur quasi voluptas veritatis quis quaerat a possimus beatae quidem hic numquam rerum eum provident, culpa quia fuga enim molestiae? Veniam vel, facere, veritatis necessitatibus, non
@@ -18,14 +15,9 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex';
     export default {
         layout: 'main',
-        computed: {
-            ...mapState({
-                user: (state) => state.empresa.usuario,
-            }),
-        },
+        computed: {},
     };
 </script>
 

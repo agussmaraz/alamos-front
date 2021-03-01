@@ -2,9 +2,9 @@
     <section class="caja-madre">
         <nav class="flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/ventas/automoviles/caracteristicas">
-                    <IconArrow class="arrow" />
-                </nuxt-link>
+                <div @click="back">
+                    <IconArrow class="arrow cursor-pointer" />
+                </div>
             </div>
             <div class="font-bold">Publicar vehiculo</div>
             <div class="font-bold text-xs mt-1">Cancelar</div>
@@ -38,7 +38,7 @@
                 />
             </div>
         </article>
-        <article class="caja-componente mb-40">
+        <article class="caja-componente mb-40 h-screen">
             <!-- <Auto /> -->
             <transition name="slide-fade">
                 <component :is="componente_actual" class="mb-20" />
@@ -88,6 +88,23 @@
                 openModal: 'modal/openModal',
                 closeModal: 'modal/closeModal',
             }),
+            back() {
+                if (this.componente_actual === 'MotoPrecio') {
+                    this.componente_actual = 'MotoElegidos';
+                } else if (this.componente_actual === 'MotoFotos') {
+                    this.componente_actual = 'MotoPrecio';
+                } else if (this.componente_actual === 'MotoImperfecciones') {
+                    this.componente_actual = 'MotoPrecio';
+                } else if (this.componente_actual === 'MotoDetalles') {
+                    this.componente_actual = 'MotoImperfecciones';
+                } else if (this.componente_actual === 'MotoImperfecciones2') {
+                    this.componente_actual = 'MotoImperfecciones';
+                } else if (this.componente_actual === 'MotoUbicacion') {
+                    this.componente_actual = 'MotoImperfecciones2';
+                } else if (this.componente_actual === 'MotoComentarios') {
+                    this.componente_actual = 'MotoUbicacion';
+                }
+            },
             changePage() {
                 if (this.componente_actual === 'MotoElegidos') {
                     this.componente_actual = 'MotoPrecio';

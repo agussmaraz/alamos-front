@@ -2,12 +2,12 @@
     <section class="caja-madre">
         <nav class="flex justify-between px-3 py-4">
             <div>
-                <nuxt-link to="/ventas/automoviles/caracteristicas">
-                    <IconArrow class="arrow" />
-                </nuxt-link>
+                <div @click="back">
+                    <IconArrow class="arrow cursor-pointer" />
+                </div>
             </div>
             <div class="font-bold">Publicar vehiculo</div>
-            <div class="font-bold text-xs mt-1">Cancelar</div>
+            <nuxt-link to="/home" class="font-bold text-xs mt-1">Cancelar</nuxt-link>
         </nav>
         <article v-if="componente_actual !== 'Detalles'" class="caja-pasos flex justify-between mt-5 px-8 py-4">
             <div class="div-icon">
@@ -38,7 +38,7 @@
                 />
             </div>
         </article>
-        <article class="caja-componente mb-40">
+        <article class="caja-componente mb-40 h-screen">
             <!-- <Auto /> -->
             <transition name="slide-fade">
                 <component :is="componente_actual" class="mb-20" />
@@ -71,6 +71,7 @@
             Detalles: () => import('@/components/Sales/auto/Detalles'),
             Ubicacion: () => import('@/components/Sales/auto/Ubicacion'),
             Comentarios: () => import('@/components/Sales/auto/Comentarios'),
+            Reporte: () => import('@/components/Sales/auto/Reporte'),
         },
         data() {
             return {
@@ -81,6 +82,7 @@
             ...mapState({
                 modalImperfecciones: (state) => state.modal.modal.imperfecciones,
                 modalFotos: (state) => state.modal.modal.fotos,
+                user: (state) => state.auth.usuario,
             }),
         },
         methods: {
@@ -88,6 +90,23 @@
                 openModal: 'modal/openModal',
                 closeModal: 'modal/closeModal',
             }),
+            back() {
+                if (this.componente_actual === 'Precio') {
+                    this.componente_actual = 'Elegidos';
+                } else if (this.componente_actual === 'Fotos') {
+                    this.componente_actual = 'Precio';
+                } else if (this.componente_actual === 'Imperfecciones') {
+                    this.componente_actual = 'Precio';
+                } else if (this.componente_actual === 'Detalles') {
+                    this.componente_actual = 'Imperfecciones';
+                } else if (this.componente_actual === 'Imperfecciones2') {
+                    this.componente_actual = 'Detalles';
+                } else if (this.componente_actual === 'Ubicacion') {
+                    this.componente_actual = 'Imperfecciones2';
+                } else if (this.componente_actual === 'Comentarios') {
+                    this.componente_actual = 'Ubicacion';
+                }
+            },
             changePage() {
                 if (this.componente_actual === 'Elegidos') {
                     this.componente_actual = 'Precio';
@@ -103,7 +122,12 @@
                     this.componente_actual = 'Ubicacion';
                 } else if (this.componente_actual === 'Ubicacion') {
                     this.componente_actual = 'Comentarios';
-                } else if (this.componente_actual === 'Comentarios') {
+                } else if (this.componente_actual === 'Comentarios' && this.user && this.user.role === 20) {
+                    this.componente_actual = 'Reporte';
+                    // } else if (this.componente_actual === 'Comentarios') {
+                } else if (this.componente_actual === 'Reporte') {
+                    this.$router.push('revision');
+                } else if (this.componente_actual === 'Comentarios' && this.user && this.user.role === 10) {
                     this.$router.push('revision');
                 }
             },

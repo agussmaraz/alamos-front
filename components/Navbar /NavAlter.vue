@@ -4,18 +4,25 @@
             <IconArrow class="w-8 h-8 cursor-pointer" />
         </div>
 
-        <div class="title">Notificaciones</div>
+        <div class="title">{{ active_page }}</div>
         <IconCampana class="w-8 h-8 text-gray-600" />
     </section>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+
     export default {
         name: 'Nav',
         data() {
             return {
                 openMenu: false,
             };
+        },
+        computed: {
+            ...mapState({
+                active_page: (state) => state.config.active_page,
+            }),
         },
         methods: {
             open() {

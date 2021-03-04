@@ -17,9 +17,13 @@
                 notifications: (state) => state.notifications.all,
             }),
         },
+        beforeMount() {
+            this.setActivePage('Chats');
+        },
         methods: {
             ...mapActions({
                 addNotification: 'notifications/add',
+                setActivePage: 'config/setActivePage',
             }),
             addNotif() {
                 const notif = {

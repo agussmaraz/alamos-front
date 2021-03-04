@@ -1,5 +1,5 @@
 <template>
-    <div class="notification">
+    <div class="notification" @click="goToNotif">
         <div class="notification__icon">
             <Icon :icon="notif.icon" />
         </div>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: 'Notification',
         props: {
@@ -40,6 +42,13 @@
             setInterval(this.calculatedDate, 1000);
         },
         methods: {
+            ...mapActions({
+                setActive: 'notifications/setActive',
+            }),
+            goToNotif() {
+                this.setActive(this.notif);
+                this.$router.push(this.notif.link);
+            },
             calculatedDate() {
                 const seconds = Math.floor((new Date() - this.notif.date) / 1000);
 

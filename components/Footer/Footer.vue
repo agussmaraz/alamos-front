@@ -1,28 +1,30 @@
 <template>
     <section class="text-gray-600 w-full fixed bottom-0 shadow pt-3 z-10">
         <div class="h-16 rounded-full absolute div-vender z-0">
-            <IconCarSale class="w-10 h-10" />
+            <nuxt-link to="/ventas">
+                <IconCarSale class="w-10 h-10 cursor-pointer" />
+            </nuxt-link>
         </div>
         <ul class="flex justify-between items-center px-2">
-            <li>
+            <li class="li">
                 <nuxt-link to="/home">
                     <IconHome class="w-6 h-6" />
                     Inicio
                 </nuxt-link>
             </li>
-            <li>
+            <nuxt-link to="/favoritos" class="li">
                 <IconFav class="w-6 h-6" />
                 Favoritos
-            </li>
-            <li class="relative mt-5">Ventas</li>
-            <li>
+            </nuxt-link>
+            <nuxt-link to="/ventas" class="relative mt-5 cursor-pointer">Vender</nuxt-link>
+            <li class="li">
                 <IconChat class="w-6 h-6" />
                 Chats
             </li>
-            <li>
+            <nuxt-link class="li" to="/tienda-virtual">
                 <IconMarket class="w-6 h-6" />
                 Marketplace
-            </li>
+            </nuxt-link>
         </ul>
     </section>
 </template>
@@ -34,7 +36,7 @@
 </script>
 
 <style scoped>
-    li {
+    .li {
         font-size: 12px;
         display: flex;
         flex-flow: column;

@@ -9,19 +9,42 @@
             </div>
             <IconCampana class="w-6 h-6 icon-campana" />
         </nav>
-        <article class="flex flex-col justify-center items-center">
-            <h3 class="font-bold mt-8">Garaje vacío</h3>
-            <p class="mt-8">No hay favoritos para ver ahora</p>
+        <FavVacio v-if="favoritos.length === 0" />
+        <FavList v-else />
 
-            <nuxt-link to="/tienda-virtual" class="bg-rojo button rounded-md text-sm px-4 py-2 mt-10">Explora vehículos</nuxt-link>
-            <IconFavoritos class="mt-10" />
-        </article>
+        <button @click="addNotif">Agregar favs</button>
+
         <Footer />
     </section>
 </template>
 
 <script>
-    export default {};
+    import { mapState, mapActions } from 'vuex';
+
+    export default {
+        computed: {
+            ...mapState({
+                favoritos: (state) => state.favoritos.all,
+            }),
+        },
+        methods: {
+            ...mapActions({
+                addNotification: 'notifications/add',
+            }),
+            addNotif() {
+                const notif = {
+                    id: this.favoritos[this.favoritos.length - 1].id + 1,
+                    title: '¡Auto Match!',
+                    text: '¡Felicitaciones! Tu oferta ha sido aceptada por el vendedor',
+                    date: Date.now(),
+                    icon: 'NotifCar',
+                    link: '/notifications/match/1',
+                };
+
+                this.addNotification(notif);
+            },
+        },
+    };
 </script>
 
 <style scoped>
@@ -37,11 +60,5 @@
     }
     h2 {
         font-size: 15px;
-    }
-    h3 {
-        font-size: 22px;
-    }
-    .button {
-        color: white;
     }
 </style>

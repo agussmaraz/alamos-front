@@ -1,15 +1,17 @@
 <template>
     <section class="p-3 flex justify-between">
-        <div @click.prevent="open()">
+        <div @click.prevent="goBack">
             <IconArrow class="w-8 h-8 cursor-pointer" />
         </div>
 
-        <div class="title">Notificaciones</div>
+        <div class="title">{{ active_page }}</div>
         <IconCampana class="w-8 h-8 text-gray-600" />
     </section>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+
     export default {
         name: 'Nav',
         data() {
@@ -17,12 +19,14 @@
                 openMenu: false,
             };
         },
+        computed: {
+            ...mapState({
+                active_page: (state) => state.config.active_page,
+            }),
+        },
         methods: {
-            open() {
-                this.openMenu = true;
-            },
-            close() {
-                this.openMenu = false;
+            goBack() {
+                this.$router.back();
             },
         },
     };

@@ -1,7 +1,7 @@
 <template>
     <div class="h-full">
         <NavAlter class="fixed w-full" />
-        <div class="layout__body pb-16 w-full min-h-full">
+        <div class="layout__body pb-8 w-full min-h-full h-full">
             <Nuxt />
         </div>
         <Footer class="w-full" />

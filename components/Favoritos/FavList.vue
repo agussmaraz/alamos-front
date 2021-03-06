@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <Notification v-for="fav in favoritos" :key="fav.id" :fav="fav" />
+            <Favs v-for="fav in favoritos" :key="fav.id" :fav="fav" />
         </ul>
     </div>
 </template>
@@ -19,4 +19,4 @@
     };
 </script>
 
-<style></style>
+<style scoped></style>

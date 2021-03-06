@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <Chat v-for="chat in Object.values(chats)" :key="chat.id" :chat="chat" />
+            <Chat v-for="publication in Object.values(publications)" :key="publication.id" :publication="publication" />
         </ul>
     </div>
 </template>
@@ -13,7 +13,7 @@
         name: 'ChatsList',
         computed: {
             ...mapState({
-                chats: (state) => state.chats.all,
+                publications: (state) => state.publications.all,
             }),
         },
     };

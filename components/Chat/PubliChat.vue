@@ -5,10 +5,10 @@
         </div>
         <div class="chat__conversation__body">
             <div class="chat__conversation__header">
-                <h2>{{ publication.title }}</h2>
+                <h2>{{ chat.contact }}</h2>
                 <p>{{ date }}</p>
             </div>
-            <p class="chat__conversation__text">{{ last_message.from }}: {{ last_message.text }}</p>
+            <p class="chat__conversation__text">{{ last_message.text }}</p>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@
     export default {
         name: 'Notification',
         props: {
-            publication: {
+            chat: {
                 type: Object,
                 default() {
                     return {};
@@ -33,18 +33,10 @@
         },
         computed: {
             last_message() {
-                let latest = null;
-
-                this.publication.chats.forEach((chat) => {
-                    if (latest === null || chat.messages[chat.messages.length - 1].time > latest.time) {
-                        latest = chat.messages[chat.messages.length - 1];
-                    }
-                });
-
-                return latest || {};
+                return this.chat.messages[this.chat.messages.length - 1];
             },
             chatIcon() {
-                return this.publication.icon;
+                return this.chat.icon;
             },
         },
         mounted() {
@@ -53,11 +45,10 @@
         methods: {
             ...mapActions({
                 setActive: 'chats/setActive',
-                setActivePublication: 'publications/setActive',
             }),
             goToChat() {
-                this.setActivePublication(this.publication);
-                this.$router.push(`/chat/${this.publication.id}`);
+                this.setActive(this.chat);
+                this.$router.push(`/chat/${this.$route.params.publiId}/${this.chat.contact}`);
             },
             calculatedDate() {
                 const seconds = Math.floor((new Date() - this.last_message.time) / 1000);

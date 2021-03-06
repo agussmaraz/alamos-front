@@ -1,6 +1,6 @@
 <template>
     <section class="p-3 flex justify-between">
-        <div @click.prevent="open()">
+        <div @click.prevent="goBack">
             <IconArrow class="w-8 h-8 cursor-pointer" />
         </div>
 
@@ -25,11 +25,8 @@
             }),
         },
         methods: {
-            open() {
-                this.openMenu = true;
-            },
-            close() {
-                this.openMenu = false;
+            goBack() {
+                this.$router.back();
             },
         },
     };

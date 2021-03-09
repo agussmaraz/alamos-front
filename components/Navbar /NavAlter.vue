@@ -1,11 +1,11 @@
 <template>
-    <section class="p-3 flex justify-between">
+    <section class="p-3 flex justify-between items-center">
         <div @click.prevent="goBack">
-            <IconArrow class="w-8 h-8 cursor-pointer" />
+            <IconArrow class="w-6 h-6 cursor-pointer" />
         </div>
 
         <div class="title">{{ active_page }}</div>
-        <IconCampana class="w-8 h-8 text-gray-600" />
+        <IconCampana class="w-6 h-6 text-gray-600" />
     </section>
 </template>
 

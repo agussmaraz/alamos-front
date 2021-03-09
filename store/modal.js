@@ -6,6 +6,7 @@ export const state = () => {
             otroImperfecciones: false,
             documento: false,
             correo: false,
+            ordenar: false,
         },
     };
 };

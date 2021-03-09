@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col justify-center items-center">
         <h2>¡No tienes notificaciones!</h2>
 
         <p>¡Mantente al tanto! Las notificaciones sobre tu actividad se mostrarán aquí</p>
@@ -21,10 +21,9 @@
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 27px;
         /* identical to box height */
-
         text-align: center;
         margin-top: 50px;
     }
@@ -36,7 +35,7 @@
         font-size: 18px;
         line-height: 30px;
         /* or 167% */
-
+        width: 331px;
         text-align: center;
         margin-top: 50px;
     }
@@ -46,8 +45,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: #d9d9d9;
-        width: 200px;
-        height: 200px;
+        width: 178px;
+        height: 178px;
         border-radius: 100%;
         display: flex;
         justify-content: center;

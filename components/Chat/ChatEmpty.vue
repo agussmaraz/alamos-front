@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="flex flex-col items-center">
         <h2>Chat vacío</h2>
 
         <p>Comunícate con otros usuarios en tiempo real y sin esfuerzo</p>
 
         <div class="absolute campana">
-            <IconCampana />
+            <IconChats />
         </div>
     </div>
 </template>
@@ -21,8 +21,8 @@
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
-        font-size: 24px;
         line-height: 27px;
+        font-size: 22px;
         /* identical to box height */
 
         text-align: center;
@@ -36,7 +36,7 @@
         font-size: 18px;
         line-height: 30px;
         /* or 167% */
-
+        width: 330px;
         text-align: center;
         margin-top: 50px;
     }
@@ -46,18 +46,17 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: #d9d9d9;
-        width: 200px;
-        height: 200px;
+        width: 178px;
+        height: 178px;
         border-radius: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 50px;
+        padding: 10px;
     }
 
     .campana svg {
         fill: white;
         color: white;
-        width: 100px;
     }
 </style>

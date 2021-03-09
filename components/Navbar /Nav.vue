@@ -10,7 +10,9 @@
             <input type="text" class="w-64 h-8 bg-white rounded-2xl p-2 pl-8 relative outline-none" placeholder="Buscar" />
             <IconBuscar1 class="absolute w-5 h-5 search" />
         </div>
-        <IconCampana class="w-8 h-8 text-gray-600" />
+        <nuxt-link to="/notificaciones">
+            <IconCampana class="w-8 h-8 text-gray-600" />
+        </nuxt-link>
     </section>
 </template>
 

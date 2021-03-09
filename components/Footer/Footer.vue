@@ -17,10 +17,10 @@
                 Favoritos
             </nuxt-link>
             <nuxt-link to="/ventas" class="relative mt-5 cursor-pointer">Vender</nuxt-link>
-            <li class="li">
+            <nuxt-link to="/chat" class="li">
                 <IconChat class="w-6 h-6" />
                 Chats
-            </li>
+            </nuxt-link>
             <nuxt-link class="li" to="/tienda-virtual">
                 <IconMarket class="w-6 h-6" />
                 Marketplace

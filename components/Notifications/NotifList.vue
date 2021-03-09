@@ -1,7 +1,9 @@
 <template>
     <div>
         <ul>
+            <!-- <transition-group name="slide-fade" tag="div"> -->
             <Notification v-for="notification in notifications" :key="notification.id" :notif="notification" />
+            <!-- </transition-group> -->
         </ul>
     </div>
 </template>
@@ -19,4 +21,13 @@
     };
 </script>
 
-<style></style>
+<style scoped>
+    .slide-fade-enter-active {
+        transition: all 0.3s ease;
+    }
+
+    .slide-fade-enter {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>

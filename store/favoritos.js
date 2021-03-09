@@ -6,21 +6,29 @@ export const state = () => {
 
 export const getters = {
     read(state) {
-        return state.all.filter((notif) => notif.opened === true);
+        return state.all.filter((fav) => fav.opened === true);
     },
     unread(state) {
-        return state.all.filter((notif) => notif.opened === false);
+        return state.all.filter((fav) => fav.opened === false);
     },
 };
 
 export const actions = {
-    add({ commit }, notif) {
-        commit('ADD_FAVS', notif);
+    add({ commit }, fav) {
+        commit('ADD_FAVS', fav);
+    },
+    eliminate({ commit }, fav) {
+        const array = state.all.filter((array) => array !== fav);
+        console.log(array);
+        // commit('DELETE_FAV', array);
     },
 };
 
 export const mutations = {
-    ADD_FAVS(state, notif) {
-        state.all.push(notif);
+    ADD_FAVS(state, fav) {
+        state.all.push(fav);
+    },
+    DELETE_FAV(state, fav) {
+        state.all = fav;
     },
 };

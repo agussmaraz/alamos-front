@@ -18,7 +18,7 @@
             }),
         },
         beforeMount() {
-            this.setActivePage('Chats');
+            this.setActivePage('Notificaciones');
         },
         methods: {
             ...mapActions({
@@ -27,11 +27,11 @@
             }),
             addNotif() {
                 const notif = {
-                    id: this.notifications[this.notifications.length - 1].id + 1,
+                    // id: this.notifications[this.notifications.length - 1].id + 1,
                     title: '¡Auto Match!',
                     text: '¡Felicitaciones! Tu oferta ha sido aceptada por el vendedor',
                     date: Date.now(),
-                    icon: 'NotifCar',
+                    icon: 'OfferAccepted',
                     link: '/notifications/match/1',
                 };
 

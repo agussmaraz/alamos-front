@@ -1,16 +1,7 @@
 export const state = () => {
     return {
         active: null,
-        all: [
-            {
-                id: 1,
-                title: '¡Auto Match!',
-                text: '¡Felicitaciones! Tu oferta ha sido aceptada por el vendedor',
-                date: Date.now(),
-                icon: 'OfferAccepted',
-                link: '/notificaciones/match/1',
-            },
-        ],
+        all: [],
     };
 };
 

@@ -1,7 +1,7 @@
 <template>
     <section class="flex flex-col items-center justify-center">
         <article class="article-auto flex items-center mt-6">
-            <IconFavs class="icon-fav" />
+            <IconHeartComplete class="icon-fav" />
             <div>
                 <img src="~/assets/img/Subaru.jpg" alt="auto" class="auto-img" />
             </div>
@@ -59,8 +59,8 @@
     }
     .icon-fav {
         position: absolute;
-        top: 4px;
-        right: 0px;
+        top: 2px;
+        right: 3px;
     }
     .icon-share {
         position: absolute;

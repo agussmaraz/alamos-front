@@ -17,8 +17,10 @@
                 Consultar
             </div>
             <div>
-                <IconVersus class="w-8 h-10" />
-                Versus
+                <nuxt-link to="/versus">
+                    <IconVersus class="w-8 h-10" />
+                    Versus
+                </nuxt-link>
             </div>
         </section>
     </article>

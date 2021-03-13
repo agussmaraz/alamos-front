@@ -1,6 +1,6 @@
 export const state = () => {
     return {
-        all: [],
+        all: [{ id: 1, linea: 'Outback 3.6R ES', marca: 'Subaru', año: 2019, precio: '72.000.000', lugar: 'Bogotá D.C', dueño: 'Dueño Directo' }],
     };
 };
 
@@ -17,10 +17,9 @@ export const actions = {
     add({ commit }, fav) {
         commit('ADD_FAVS', fav);
     },
-    eliminate({ commit }, fav) {
-        const array = state.all.filter((array) => array !== fav);
-        console.log(array);
-        // commit('DELETE_FAV', array);
+    eliminate({ commit, state }, fav) {
+        const array = state.all.filter((array) => array.id !== fav);
+        commit('DELETE_FAV', array);
     },
 };
 

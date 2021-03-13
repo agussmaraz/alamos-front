@@ -45,7 +45,7 @@
             }),
             addNFav() {
                 const fav = {
-                    // id: this.favoritos[this.favoritos.length - 1].id + 1,
+                    id: this.favoritos[this.favoritos.length - 1].id + 1,
                     linea: 'Outback 3.6R ES',
                     marca: 'Subaru',
                     año: 2019,

@@ -1,7 +1,9 @@
 <template>
     <section class="flex flex-col items-center justify-center">
         <article class="article-auto flex items-center mt-6">
-            <IconHeartComplete class="icon-fav" />
+            <div @click="deleteFav(fav.id)">
+                <IconHeartComplete class="icon-fav" />
+            </div>
             <div>
                 <img src="~/assets/img/Subaru.jpg" alt="auto" class="auto-img" />
             </div>
@@ -29,6 +31,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     export default {
         name: 'Notification',
         props: {
@@ -43,6 +46,11 @@
             return {
                 date: 'Menos de 1 minuto',
             };
+        },
+        methods: {
+            ...mapActions({
+                deleteFav: 'favoritos/eliminate',
+            }),
         },
     };
 </script>

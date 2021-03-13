@@ -1,7 +1,6 @@
 <template>
     <section>
         <h2 class="font-bold text-rojo">Ordenar por:</h2>
-        {{ elegido }}
         <hr class="my-2" />
         <article>
             <div class="flex items-center mb-3 justify-between">
@@ -24,7 +23,15 @@
     </section>
 </template>
 
-<script></script>
+<script>
+    export default {
+        data() {
+            return {
+                elegido: '',
+            };
+        },
+    };
+</script>
 
 <style scoped>
     h2 {

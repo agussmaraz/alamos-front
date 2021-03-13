@@ -7,6 +7,7 @@ export const state = () => {
             documento: false,
             correo: false,
             ordenar: false,
+            versus: false,
         },
     };
 };

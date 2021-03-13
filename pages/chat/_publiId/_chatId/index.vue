@@ -87,12 +87,13 @@
         height: 100%;
     }
     .chat__messages ul {
-        height: 100%;
+        height: calc(100% - 50px);
         position: relative;
+        overflow-y: scroll;
     }
 
     .chat__body {
-        height: calc(100% - 70px);
+        height: calc(100% - 52px);
     }
     .chat__header {
         background-color: #ffffff;

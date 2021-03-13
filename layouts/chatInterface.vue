@@ -27,7 +27,7 @@
 
 <style scoped>
     .layout__body {
-        padding-top: 58px;
+        padding-top: 49px;
         background-color: #e5e5e5;
     }
 </style>

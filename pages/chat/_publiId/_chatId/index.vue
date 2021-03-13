@@ -6,7 +6,10 @@
         </div>
         <div class="chat__messages">
             <ul>
-                <li v-for="message in messages" :key="message.id">{{ message.text }}</li>
+                <li v-for="message in messages" :key="message.id">
+                    <ChatBubbleSender v-if="message.from === 'nico'" :message="message.text" :timestamp="message.time" />
+                    <ChatBubbleReceiver v-else :message="message.text" :timestamp="message.time" />
+                </li>
             </ul>
         </div>
     </div>
@@ -17,7 +20,7 @@
     import Api from '../../../../services/api';
 
     export default {
-        layout: 'submain',
+        layout: 'chatInterface',
         async asyncData({ app, route }) {
             if (process.server) {
                 const publications = await Api.getPublications();
@@ -46,22 +49,50 @@
             pubPrice() {
                 return '$' + String(this.publication.price).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
             },
+            chatCounter() {
+                let counter = 0;
+
+                if (this.chat !== null) {
+                    this.messages.forEach((message) => {
+                        if (message.read === false) {
+                            counter += 1;
+                        }
+                    });
+                }
+
+                return counter;
+            },
         },
         beforeMount() {
             this.setActivePage(`Chat con ${this.chat.contact}`);
         },
+        mounted() {
+            for (let i = 0; i < this.messages.length; i++) {
+                const message = this.messages[i];
+
+                this.setMessageAsRead(message);
+            }
+        },
         methods: {
             ...mapActions({
                 setActivePage: 'config/setActivePage',
+                setMessageAsRead: 'publications/setMessageAsRead',
             }),
         },
     };
 </script>
 
 <style scoped>
-    .chat__body {
-        background-color: #e5e5e5;
+    .chat__messages {
         height: 100%;
+    }
+    .chat__messages ul {
+        height: 100%;
+        position: relative;
+    }
+
+    .chat__body {
+        height: calc(100% - 70px);
     }
     .chat__header {
         background-color: #ffffff;

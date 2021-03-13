@@ -10,6 +10,7 @@
             </div>
             <p class="chat__conversation__text">{{ last_message.text }}</p>
         </div>
+        <Counter v-if="chatCounter > 0" :amount="chatCounter" />
     </div>
 </template>
 
@@ -17,7 +18,7 @@
     import { mapActions } from 'vuex';
 
     export default {
-        name: 'Notification',
+        name: 'PubliChat',
         props: {
             chat: {
                 type: Object,
@@ -37,6 +38,17 @@
             },
             chatIcon() {
                 return this.chat.icon;
+            },
+            chatCounter() {
+                let counter = 0;
+
+                this.chat.messages.forEach((message) => {
+                    if (message.read === false) {
+                        counter += 1;
+                    }
+                });
+
+                return counter;
             },
         },
         mounted() {
@@ -94,6 +106,7 @@
 
 <style scoped>
     .chat__conversation {
+        position: relative;
         height: 93px;
         display: flex;
         background: #f9f8f8;
@@ -139,9 +152,18 @@
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 22px;
         color: #444343;
         width: 100%;
+    }
+
+    .chat__conversation__text {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 7px;
     }
 </style>

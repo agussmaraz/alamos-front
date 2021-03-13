@@ -17,7 +17,7 @@
     import { mapActions } from 'vuex';
 
     export default {
-        name: 'Notification',
+        name: 'ChatUnit',
         props: {
             publication: {
                 type: Object,

@@ -91,6 +91,11 @@
         max-height: 27px;
     }
 
+    .chat--footer__icon svg {
+        max-width: 30px;
+        max-height: 30px;
+    }
+
     section {
         height: 70px;
         background-color: white;

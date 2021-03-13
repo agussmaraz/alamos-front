@@ -3,7 +3,7 @@
         <ChatEmpty v-if="Object.values(publications).length === 0" />
         <ChatList v-else />
 
-        <button @click="newMessage">Agregar notif</button>
+        <!-- <button @click="newMessage">Agregar notif</button> -->
     </div>
 </template>
 
@@ -34,21 +34,21 @@
         },
         methods: {
             ...mapActions({
-                addChat: 'publications/addMessage',
+                // addChat: 'publications/addMessage',
                 setActivePage: 'config/setActivePage',
             }),
-            newMessage() {
-                const chat = {
-                    publication: 1,
-                    from: 'agus',
-                    to: 'nico',
-                    text: 'hola ' + String(Date.now()).slice(-4),
-                    time: Date.now(),
-                    read: false,
-                };
+            // newMessage() {
+            //     const chat = {
+            //         publication: 1,
+            //         from: 'agus',
+            //         to: 'nico',
+            //         text: 'hola ' + String(Date.now()).slice(-4),
+            //         time: Date.now(),
+            //         read: false,
+            //     };
 
-                this.addChat(chat);
-            },
+            //     this.addChat(chat);
+            // },
         },
     };
 </script>

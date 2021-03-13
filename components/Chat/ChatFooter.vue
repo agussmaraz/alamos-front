@@ -4,10 +4,10 @@
             <Icon icon="CamaraGray" />
         </div>
         <div class="chat--footer__input">
-            <input type="text" placeholder="Mensaje" @keypress.enter="newMessage" @input="(event) => setMessage(event.target.value)" />
+            <input type="text" placeholder="Mensaje" :value="current_message" @keypress.enter="newMessage" @input="(event) => setMessage(event.target.value)" />
         </div>
         <div class="chat--footer__icon cursor-pointer" @click="newMessage">
-            <Icon icon="Arrow2" />
+            <Icon icon="SendMessage" />
         </div>
     </section>
 </template>

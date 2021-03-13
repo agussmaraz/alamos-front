@@ -6,7 +6,7 @@
         <div class="chat--footer__input">
             <input type="text" placeholder="Mensaje" @keypress.enter="newMessage" @input="(event) => setMessage(event.target.value)" />
         </div>
-        <div class="chat--footer__icon" @click="newMessage">
+        <div class="chat--footer__icon cursor-pointer" @click="newMessage">
             <Icon icon="Arrow2" />
         </div>
     </section>
@@ -30,21 +30,23 @@
                 addChat: 'publications/addMessage',
             }),
             newMessage() {
-                const random_id = Math.random();
+                if (typeof this.current_message === 'string' && this.current_message !== '') {
+                    const random_id = Math.random();
 
-                const chat = {
-                    id: Math.floor(Math.random() * 10000),
-                    owner_type: 'publications',
-                    owner_id: this.publication.id,
-                    from: random_id > 0.5 ? this.chat.contact : 'nico',
-                    to: random_id > 0.5 ? 'nico' : this.chat.contact,
-                    text: this.current_message,
-                    time: Date.now(),
-                    read: false,
-                };
+                    const chat = {
+                        id: Math.floor(Math.random() * 10000),
+                        owner_type: 'publications',
+                        owner_id: this.publication.id,
+                        from: random_id > 0.5 ? this.chat.contact : 'nico',
+                        to: random_id > 0.5 ? 'nico' : this.chat.contact,
+                        text: this.current_message,
+                        time: Date.now(),
+                        read: false,
+                    };
 
-                this.addChat(chat);
-                this.setMessage('');
+                    this.addChat(chat);
+                    this.setMessage('');
+                }
             },
         },
     };

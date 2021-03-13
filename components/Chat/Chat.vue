@@ -1,5 +1,5 @@
 <template>
-    <div class="chat__conversation" @click="goToChat">
+    <div class="chat__conversation cursor-pointer" @click="goToChat">
         <div class="chat__conversation__icon">
             <img src="" alt="" />
         </div>

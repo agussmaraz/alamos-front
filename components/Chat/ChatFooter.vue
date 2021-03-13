@@ -44,6 +44,7 @@
                 };
 
                 this.addChat(chat);
+                this.setMessage('');
             },
         },
     };

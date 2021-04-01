@@ -23,10 +23,10 @@
                 <IconComments class="icon-normal w-12 h-10 mt-2 m-auto" />
             </div>
         </article>
-        <article class="caja-componente mb-40">
+        <article class="caja-componente pb-40">
             <!-- <Auto /> -->
             <transition enter-active-class="transition duration-300 transform ease-out" enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition duration-300 transform ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                <component :is="componente_actual" class="mb-20" />
+                <component :is="componente_actual" class="pb-20" />
             </transition>
             <div v-if="componente_actual !== 'Caracteristicas'" class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg m-auto button-sig">
                 <button class="a w-full h-full" @click="changePage">Siguiente</button>

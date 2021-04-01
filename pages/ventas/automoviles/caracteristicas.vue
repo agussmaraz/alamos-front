@@ -38,10 +38,10 @@
                 />
             </div>
         </article>
-        <article class="caja-componente mb-40 h-screen">
+        <article class="caja-componente pb-40 h-screen">
             <!-- <Auto /> -->
             <transition name="slide-fade">
-                <component :is="componente_actual" class="mb-20" />
+                <component :is="componente_actual" class="pb-40" />
             </transition>
             <div v-if="componente_actual !== 'Comentarios'" class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg m-auto button-sig">
                 <button class="a w-full h-full" @click="changePage">Siguiente</button>

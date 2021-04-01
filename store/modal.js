@@ -8,6 +8,7 @@ export const state = () => {
             correo: false,
             ordenar: false,
             versus: false,
+            multipleVersus: false,
         },
     };
 };

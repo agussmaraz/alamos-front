@@ -1,6 +1,6 @@
 <template>
     <section>
-        <component :is="componente_actual" :changeComponent="changePage" class="mb-20 component" />
+        <component :is="componente_actual" :changeComponent="changePage" class="pb-20 component" />
     </section>
 </template>
 

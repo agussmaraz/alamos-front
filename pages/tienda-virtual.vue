@@ -32,11 +32,14 @@
             <section class="flex flex-col justify-center items-center pt-32 pb-10">
                 <section v-if="mostrar == 'lista'">
                     <article v-for="(item, index) in auto" :key="index" class="article-auto flex items-center mt-6">
-                        <IconCars class="icon-autos" />
+                        <div class="cursor-pointer" @click="setComparacion(item)">
+                            <span v-if="active == item.id" class="px-2 py-1 rounded-full">Versus</span>
+                            <IconCars v-else class="icon-autos" />
+                        </div>
                         <IconFavs class="icon-fav" />
                         <IconShare class="icon-share" />
                         <div>
-                            <img src="~/assets/img/Subaru.jpg" alt="auto" class="auto-img" />
+                            <img :src="item.img" alt="auto" class="auto-img" />
                         </div>
                         <div class="article-data pl-2 pt-2">
                             <h4 class="uppercase p-linea">{{ item.linea }}</h4>
@@ -71,12 +74,13 @@
                 </section>
                 <section v-if="mostrar == 'ventana'">
                     <article v-for="(item, index) in auto" :key="index" class="article-auto2 flex flex-col mt-10">
-                        <IconCars class="icon-autos" />
+                        <div class="cursor-pointer" @click="setComparacion(item)">
+                            <span v-if="active == item.id" class="px-2 py-1 rounded-full">Versus</span>
+                            <IconCars v-else class="icon-autos" />
+                        </div>
                         <IconFavs class="icon-fav2" />
                         <IconShare class="icon-share2" />
-                        <div>
-                            <img src="~/assets/img/Subaru.jpg" alt="auto" class="auto-img2" />
-                        </div>
+                        <div><img :src="item.img" alt="auto" class="auto-img2" /></div>
                         <div class="article-data2 pl-2 pt-2">
                             <h4 class="uppercase p-linea2">{{ item.linea }}</h4>
                             <div class="flex items-center mt-1">
@@ -124,12 +128,13 @@
                 </section>
                 <section v-if="mostrar == 'cuadrado'" class="flex flex-wrap justify-around">
                     <article v-for="(item, index) in auto" :key="index" class="article-auto3 flex flex-col items-center mt-6">
-                        <IconCars class="icon-autos" />
+                        <div class="cursor-pointer" @click="setComparacion(item)">
+                            <span v-if="active == item.id" class="px-2 py-1 rounded-full">Versus</span>
+                            <IconCars v-else class="icon-autos" />
+                        </div>
                         <IconFavs class="icon-fav3" />
                         <IconShare class="icon-share3" />
-                        <div>
-                            <img src="~/assets/img/Subaru.jpg" alt="auto" class="auto-img3" />
-                        </div>
+                        <div><img :src="item.img" alt="auto" class="auto-img3" /></div>
                         <div class="article-data3 pl-2 pt-2">
                             <h4 class="uppercase p-linea">{{ item.linea }}</h4>
                             <div class="flex items-center mt-1">
@@ -163,10 +168,15 @@
                 </section>
             </section>
         </section>
+        <section v-if="multiVersus" class="absolute section-modal flex justify-center">
+            <!-- <article class="modal z-10" @click="closeModal({ modal: 'multiVersus' })"></article> -->
+            <MultiVersus class="consejos-modal absolute z-20" />
+        </section>
     </main>
 </template>
 
 <script>
+    import { mapState, mapActions } from 'vuex';
     export default {
         data() {
             return {
@@ -178,7 +188,9 @@
                         precio: '72.000.000',
                         km: '18.000',
                         lugar: 'Bogotá D.C',
+                        img: require('~/assets/img/otro.png'),
                         revision: false,
+                        id: 1,
                         dueño: 'Dueño Directo',
                     },
                     {
@@ -188,7 +200,9 @@
                         precio: '72.000.000',
                         km: '18.000',
                         lugar: 'Bogotá D.C',
+                        img: require('~/assets/img/Subaru.jpg'),
                         revision: true,
+                        id: 2,
                         dueño: 'Concesionario',
                     },
                     {
@@ -198,6 +212,8 @@
                         precio: '72.000.000',
                         km: '18.000',
                         lugar: 'Bogotá D.C',
+                        img: require('~/assets/img/Subaru.jpg'),
+                        id: 3,
                         revision: false,
                         dueño: 'Dueño Directo',
                     },
@@ -208,14 +224,31 @@
                         precio: '72.000.000',
                         km: '18.000',
                         lugar: 'Bogotá D.C',
+                        img: require('~/assets/img/Subaru.jpg'),
                         revision: false,
+                        id: 4,
                         dueño: 'Dueño Directo',
                     },
                 ],
                 mostrar: 'lista',
+                active: '',
             };
         },
+        computed: {
+            ...mapState({
+                multiVersus: (state) => state.modal.modal.multipleVersus,
+            }),
+        },
         methods: {
+            ...mapActions({
+                openModal: 'modal/openModal',
+                setVersus: 'versus/setVersus',
+            }),
+            setComparacion(data) {
+                this.openModal({ modal: 'multipleVersus' });
+                this.setVersus(data);
+                this.active = data.id;
+            },
             show() {
                 switch (this.mostrar) {
                     case 'lista':
@@ -234,6 +267,31 @@
 </script>
 
 <style scoped>
+    .section-modal {
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+    span {
+        background-color: black;
+        color: white;
+        font-size: 10px;
+        position: absolute;
+        width: 58px;
+        display: flex;
+        justify-content: center;
+        top: 5px;
+    }
+    .consejos-modal {
+        left: 50%;
+        transform: translateX(-50%);
+        /* border-radius: 8px; */
+        background-color: white;
+        height: 120px;
+        padding: 10px;
+        bottom: 0px;
+        width: 100%;
+    }
     hr {
         color: #c4c4c4;
         width: 90%;

@@ -1,5 +1,5 @@
 <template>
-    <section class="p-3 flex justify-between items-center">
+    <section class="navbar__top p-3 flex justify-between items-center">
         <div @click.prevent="goBack">
             <IconArrow class="w-6 h-6 cursor-pointer" />
         </div>
@@ -33,6 +33,10 @@
 </script>
 
 <style scoped>
+    .navbar__top {
+        height: 50px;
+    }
+
     .title {
         font-family: Montserrat;
         font-style: normal;

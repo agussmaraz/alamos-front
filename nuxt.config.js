@@ -37,7 +37,7 @@ export default {
      ** Plugins to load before mounting the App
      ** https://nuxtjs.org/guide/plugins
      */
-    plugins: [],
+    plugins: ['~/plugins/setSessionEngine.js'],
     /*
      ** Auto import components
      ** See https://nuxtjs.org/api/configuration-components
@@ -59,6 +59,7 @@ export default {
     modules: [
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        ['cookie-universal-nuxt', { alias: 'cookies' }],
     ],
     /*
      ** Axios module configuration

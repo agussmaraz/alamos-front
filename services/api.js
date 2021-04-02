@@ -22,6 +22,10 @@ class ApiClient {
         return this._makeAuthCall('users/login', { id, password }, 'POST');
     }
 
+    loginWithToken(token) {
+        return this._makeAuthCall('users/login/token', { token }, 'POST');
+    }
+
     checkHealth() {
         return this._makeCall('health');
     }

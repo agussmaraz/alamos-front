@@ -1,5 +1,5 @@
 <template>
-    <main class="main">
+    <main class="main relative">
         <section class="">
             <article class="fixed w-full z-20">
                 <nav class="flex justify-between items-center">
@@ -172,13 +172,17 @@
             <!-- <article class="modal z-10" @click="closeModal({ modal: 'multiVersus' })"></article> -->
             <MultiVersus class="consejos-modal absolute z-20" />
         </section>
-        <MPFiltro v-if="filters" />
+        <MPFiltro v-if="filters" class="top-0 absolute z-20" />
     </main>
 </template>
 
 <script>
     import { mapState, mapActions } from 'vuex';
+    import MPFiltro from '@/components/MarketPlace/MPFiltro';
     export default {
+        components: {
+            MPFiltro,
+        },
         data() {
             return {
                 filters: false,
@@ -242,6 +246,9 @@
             }),
         },
         methods: {
+            showFilters() {
+                this.filters = true;
+            },
             ...mapActions({
                 openModal: 'modal/openModal',
                 setVersus: 'versus/setVersus',

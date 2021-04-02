@@ -7,6 +7,7 @@ export const state = () => {
             contraseña: '',
         },
         usuario: null,
+        logged_in: false,
     };
 };
 
@@ -19,6 +20,9 @@ export const actions = {
         objeto.id = data.cedula;
         objeto.password = data.contraseña;
         axios.post('https://auth.alamosautos.co/users/login', objeto).then((res) => dispatch('setUser', res.data.data));
+    },
+    logout({ commit }) {
+        commit('LOGOUT');
     },
     setUser({ commit }, user) {
         commit('SET_USER', user);
@@ -35,5 +39,10 @@ export const mutations = {
     },
     SET_USER(state, data) {
         state.usuario = data;
+        state.logged_in = true;
+    },
+    LOGOUT(state) {
+        state.logged_in = false;
+        state.usuario = null;
     },
 };

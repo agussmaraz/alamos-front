@@ -8,7 +8,7 @@
                 <h2>{{ publication.title }}</h2>
                 <p>{{ date }}</p>
             </div>
-            <p class="chat__conversation__text">{{ last_message.from_user.first_name + ' ' + last_message.from_user.last_name }}: {{ last_message.text }}</p>
+            <p class="chat__conversation__text">{{ contact_name }} {{ last_message.text }}</p>
         </div>
     </div>
 </template>
@@ -32,6 +32,13 @@
             };
         },
         computed: {
+            contact_name() {
+                if (this.last_message.from_user && this.last_message.to_user) {
+                    return this.last_message.from_user.first_name + ' ' + this.last_message.from_user.last_name + ':';
+                }
+
+                return '';
+            },
             last_message() {
                 let latest = null;
 

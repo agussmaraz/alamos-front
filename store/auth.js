@@ -1,4 +1,5 @@
 import Api from '../services/api';
+import Session from '../services/session';
 
 export const state = () => {
     return {
@@ -23,9 +24,14 @@ export const actions = {
         commit('SET_ERROR', null);
 
         return Api.login(data.cedula, data.contraseña)
-            .then((user) => dispatch('setUser', user))
+            .then((user) => {
+                Session.save(user.Token.token);
+                dispatch('setUser', user);
+            })
             .catch((err) => {
-                commit('SET_ERROR', err.response.data.error);
+                if (err.response && err.response.data && err.response.data.error) {
+                    commit('SET_ERROR', err.response.data.error);
+                }
             });
     },
     logout({ commit }) {

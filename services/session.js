@@ -26,7 +26,6 @@ class Session {
         if (typeof token === 'string' && token.length > 0) {
             return Api.loginWithToken(token)
                 .then((user) => {
-                    console.log(user);
                     this.save(user.Token.token);
 
                     return user;

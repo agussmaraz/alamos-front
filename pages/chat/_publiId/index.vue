@@ -13,6 +13,7 @@
 
     export default {
         layout: 'submain',
+        middleware: ['mustBeLogged'],
         async asyncData({ app, route }) {
             if (process.server) {
                 const publications = await Api.getPublications();

@@ -23,7 +23,7 @@
                         <IconVentana v-if="mostrar == 'cuadrado'" />
                         <p class="font-bold p-filter">Vista</p>
                     </div>
-                    <div class="button-filter">
+                    <div class="button-filter" @click="showFilters">
                         <IconFilter />
                         <p class="font-bold p-filter">Filtrar</p>
                     </div>
@@ -172,6 +172,7 @@
             <!-- <article class="modal z-10" @click="closeModal({ modal: 'multiVersus' })"></article> -->
             <MultiVersus class="consejos-modal absolute z-20" />
         </section>
+        <MPFiltro v-if="filters" />
     </main>
 </template>
 
@@ -180,6 +181,7 @@
     export default {
         data() {
             return {
+                filters: false,
                 auto: [
                     {
                         linea: 'Outback 3.6R ES',

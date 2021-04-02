@@ -23,7 +23,7 @@
                         <IconVentana v-if="mostrar == 'cuadrado'" />
                         <p class="font-bold p-filter">Vista</p>
                     </div>
-                    <div class="button-filter" @click="showFilters">
+                    <div class="button-filter" @click="showFilter(true)">
                         <IconFilter />
                         <p class="font-bold p-filter">Filtrar</p>
                     </div>
@@ -172,7 +172,7 @@
             <!-- <article class="modal z-10" @click="closeModal({ modal: 'multiVersus' })"></article> -->
             <MultiVersus class="consejos-modal absolute z-20" />
         </section>
-        <MPFiltro v-if="filters" class="top-0 absolute z-20" />
+        <MPFiltro v-if="filters" :showFilter="showFilter" class="top-0 z-20" />
     </main>
 </template>
 
@@ -246,8 +246,8 @@
             }),
         },
         methods: {
-            showFilters() {
-                this.filters = true;
+            showFilter(status) {
+                this.filters = status;
             },
             ...mapActions({
                 openModal: 'modal/openModal',

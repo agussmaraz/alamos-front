@@ -35,7 +35,7 @@
         },
         mounted() {
             axios
-                .post('https://auth.alamosautos.co/users/activate/', {
+                .post(process.env.AUTH_URL + 'users/activate/', {
                     token: this.$route.params.token,
                 })
                 .then((res) => {

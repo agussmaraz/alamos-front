@@ -1,29 +1,33 @@
 <template>
     <section class="caja-padre w-full fixed">
-        <header class="p-3">
+        <header class="p-3 z-20 relative">
             <h1 class="font-bold">Categoria:</h1>
+            <IconCampanaSearch class="icon-campana w-8 h-8" />
+            <div @click="showFilter(false)">
+                <IconClose class="icon-close w-8 h-8" />
+            </div>
         </header>
         <article class="flex">
             <ul class="ul-filter">
-                <li @click="change('Ciudad')"><IconCiudad class="mr-2" /> Ciudad</li>
-                <li @click="change('Marca')"><IconMarca class="mr-2" /> Marca y Linea</li>
-                <li><IconCalendar class="mr-2" /> Modelo</li>
-                <li><IconCondicion class="mr-2" /> Condición</li>
-                <li><IconVendedor class="mr-2" />Vendedor</li>
-                <li><IconCarroceria class="mr-2" />Carrocería</li>
+                <li :class="component == 'Ciudad' ? 'li-seleccionado' : null" @click="change('Ciudad')"><IconCiudad class="mr-2" /> Ciudad</li>
+                <li :class="component == 'Marca' ? 'li-seleccionado' : null" @click="change('Marca')"><IconMarca class="mr-2" /> Marca y Linea</li>
+                <li :class="component == 'Calendar' ? 'li-seleccionado' : null" @click="change('Calendar')"><IconCalendar class="mr-2" /> Modelo</li>
+                <li :class="component == 'Condiciones' ? 'li-seleccionado' : null" @click="change('Condicion')"><IconCondicion class="mr-2" /> Condición</li>
+                <li :class="component == 'Vendedor' ? 'li-seleccionado' : null" @click="change('Vendedor')"><IconVendedor class="mr-2" />Vendedor</li>
+                <li :class="component == 'Carroceria' ? 'li-seleccionado' : null" @click="change('Carroceria')"><IconCarroceria class="mr-2" />Carrocería</li>
                 <li><IconPrecio class="mr-2" />Precio</li>
                 <li><IconKilometraje class="mr-2" />Kilometraje</li>
-                <li><IconPlaca2 class="mr-2" /> Placa</li>
+                <li :class="component == 'Placa' ? 'li-seleccionado' : null" @click="change('Placa')"><IconPlaca2 class="mr-2" /> Placa</li>
                 <li><IconCilindraje class="mr-2" /> Cilindraje</li>
-                <li><IconTransmision class="mr-2" />Transmision</li>
-                <li><IconCaja2 class="mr-2" />Caja</li>
-                <li><IconDireccion class="mr-2" />Dirección</li>
-                <li><IconCombustible class="mr-2" />Combustible</li>
-                <li><IconColor class="mr-2" />Color</li>
-                <li><IconPuertas class="mr-2" />Puertas</li>
-                <li><IconPasajeros class="mr-2 icon" /> Capacidad de pasajeros</li>
+                <li :class="component == 'Transmision' ? 'li-seleccionado' : null" @click="change('Transmision')"><IconTransmision class="mr-2" />Transmision</li>
+                <li :class="component == 'Caja' ? 'li-seleccionado' : null" @click="change('Caja')"><IconCaja2 class="mr-2" />Caja</li>
+                <li :class="component == 'Direccion' ? 'li-seleccionado' : null" @click="change('Direccion')"><IconDireccion class="mr-2" />Dirección</li>
+                <li :class="component == 'Combustible' ? 'li-seleccionado' : null" @click="change('Combustible')"><IconCombustible class="mr-2" />Combustible</li>
+                <li :class="component == 'Color' ? 'li-seleccionado' : null" @click="change('Color')"><IconColor class="mr-2" />Color</li>
+                <li :class="component == 'Puertas' ? 'li-seleccionado' : null" @click="change('Puertas')"><IconPuertas class="mr-2" />Puertas</li>
+                <li :class="component == 'Pasajeros' ? 'li-seleccionado' : null" @click="change('Pasajeros')"><IconPasajeros class="mr-2 icon" /> Capacidad de pasajeros</li>
                 <li><IconCapacidad class="mr-2 icon" />Capacidad de carga</li>
-                <li><IconItems class="mr-2" />Items carro</li>
+                <li :class="component == 'Items' ? 'li-seleccionado' : null" @click="change('Items')"><IconItems class="mr-2" />Items carro</li>
                 <li>Único dueño</li>
                 <li>Servicio público</li>
                 <li>Blindado</li>
@@ -32,13 +36,35 @@
             </ul>
             <FiltroCiudad v-if="component == 'Ciudad'" class="pt-20 pl-4" />
             <FiltroMarca v-if="component == 'Marca'" class="pt-20 pl-4" />
+            <FiltroCalendar v-if="component == 'Calendar'" class="pt-20 pl-4" />
+            <FiltroCondicion v-if="component == 'Condicion'" class="pt-20 pl-4" />
+            <FiltroVendedor v-if="component == 'Vendedor'" class="pt-20 pl-4" />
+            <FiltroPlaca v-if="component == 'Placa'" class="pt-20 pl-4" />
+            <FiltroTransmision v-if="component == 'Transmision'" class="pt-20 pl-4" />
+            <FiltroCaja v-if="component == 'Caja'" class="pt-20 pl-4" />
+            <FiltroDireccion v-if="component == 'Direccion'" class="pt-20 pl-4" />
+            <FiltroCombustible v-if="component == 'Combustible'" class="pt-20 pl-4" />
+            <FiltroColor v-if="component == 'Color'" class="pt-20 pl-4" />
+            <FiltroPuertas v-if="component == 'Puertas'" class="pt-20 pl-4" />
+            <FiltroPasajeros v-if="component == 'Pasajeros'" class="pt-20 pl-4" />
+            <FiltroItems v-if="component == 'Items'" class="pt-20 pl-4" />
+            <FiltroCarroceria v-if="component == 'Carroceria'" class="pt-20 pl-4" />
         </article>
+        <footer>
+            <button class="bg-rojo h-10 w-64 rounded-md">Aplicar (x)</button>
+        </footer>
     </section>
 </template>
 
 <script>
     export default {
         name: 'MPFiltro',
+        props: {
+            showFilter: {
+                type: Function,
+                required: true,
+            },
+        },
         data() {
             return {
                 component: 'Ciudad',
@@ -53,6 +79,40 @@
 </script>
 
 <style scoped>
+    .li-seleccionado {
+        background-color: #eb7083;
+        color: white;
+    }
+    .li-seleccionado svg {
+        stroke: white;
+    }
+    li svg {
+        stroke: #797979;
+    }
+    footer {
+        position: absolute;
+        bottom: 0;
+        background: white;
+        z-index: 40;
+        width: 100%;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0px -1px 4px rgb(0 0 0 / 25%);
+    }
+    button {
+        color: white;
+    }
+    .icon-campana {
+        position: absolute;
+        right: 51px;
+        top: 10px;
+    }
+    .icon-close {
+        position: absolute;
+        right: 11px;
+        top: 9px;
+    }
     header {
         background-color: white;
         position: fixed;
@@ -62,6 +122,7 @@
     .caja-padre {
         background-color: white;
         height: 100vh;
+        font-family: Montserrat;
     }
     .ul-filter {
         width: 140px;

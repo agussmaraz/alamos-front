@@ -174,7 +174,7 @@ export const actions = {
         objeto.city = data.ciudad;
         objeto.address = '';
         objeto.status = 0;
-        axios.post('https://auth.alamosautos.co/users/register', objeto).then((res) => dispatch('auth/setUser', res.data.data, { root: true }));
+        axios.post(process.env.AUTH_URL + 'users/register', objeto).then((res) => dispatch('auth/setUser', res.data.data, { root: true }));
     },
     setError({ commit }, error) {
         commit('SET_ERROR', error);

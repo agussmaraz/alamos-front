@@ -72,5 +72,7 @@ export default {
     build: {},
     env: {
         GRINGOTTS_URL: process.env.GRINGOTTS_URL,
+        API_URL: process.env.API_URL,
+        AUTH_URL: process.env.AUTH_URL,
     },
 };

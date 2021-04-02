@@ -14,9 +14,9 @@
     export default {
         layout: 'submain',
         middleware: ['mustBeLogged'],
-        async asyncData({ app, route }) {
+        async asyncData({ app, route, store }) {
             if (process.server) {
-                const publications = await Api.getPublications();
+                const publications = await Api.getPublicationsByUser(store.state.auth.usuario.id);
 
                 for (let i = 0; i < publications.length; i++) {
                     const publication = publications[i];

@@ -1,10 +1,14 @@
-import axios from 'axios';
+import Api from '../services/api';
 
 export const state = () => {
     return {
         datos: {
             cedula: '',
             contraseña: '',
+        },
+        errors: {
+            user: false,
+            password: false,
         },
         usuario: null,
         logged_in: false,
@@ -16,10 +20,13 @@ export const actions = {
         commit('SET_DATA', data);
     },
     login({ commit, dispatch }, data) {
-        const objeto = {};
-        objeto.id = data.cedula;
-        objeto.password = data.contraseña;
-        axios.post('https://auth.alamosautos.co/users/login', objeto).then((res) => dispatch('setUser', res.data.data));
+        commit('SET_ERROR', null);
+
+        return Api.login(data.cedula, data.contraseña)
+            .then((user) => dispatch('setUser', user))
+            .catch((err) => {
+                commit('SET_ERROR', err.response.data.error);
+            });
     },
     logout({ commit }) {
         commit('LOGOUT');
@@ -35,6 +42,16 @@ export const mutations = {
                 const propiedad = data[key];
                 state.datos[key] = propiedad;
             }
+        }
+    },
+    SET_ERROR(state, error) {
+        if (error === null) {
+            state.errors.user = false;
+            state.errors.password = false;
+        } else if (error.includes('user')) {
+            state.errors.user = 'Usuario es inválido';
+        } else {
+            state.errors.password = 'Contraseña incorrecta';
         }
     },
     SET_USER(state, data) {

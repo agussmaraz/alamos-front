@@ -26,6 +26,7 @@
         computed: {
             ...mapState({
                 data: (state) => state.auth.datos,
+                errors: (state) => state.auth.errors,
             }),
         },
         methods: {
@@ -37,8 +38,11 @@
                 this.setData({ [campo]: event.target.value });
             },
             loginUser() {
-                this.login(this.data);
-                this.$router.push('/home');
+                this.login(this.data).then((_) => {
+                    if (this.errors.user === false && this.errors.password === false) {
+                        this.$router.push('/home');
+                    }
+                });
             },
         },
     };

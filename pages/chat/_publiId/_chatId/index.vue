@@ -24,7 +24,7 @@
         middleware: ['mustBeLogged'],
         async asyncData({ app, route }) {
             if (process.server) {
-                const publications = await Api.getPublications();
+                const publications = await Api.getPublicationsByUser(app.store.state.auth.user.id);
 
                 for (let i = 0; i < publications.length; i++) {
                     const publication = publications[i];

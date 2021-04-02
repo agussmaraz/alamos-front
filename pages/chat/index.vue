@@ -14,15 +14,13 @@
     export default {
         layout: 'submain',
         middleware: ['mustBeLogged'],
-        async asyncData({ app }) {
-            if (process.server) {
-                const publications = await Api.getPublicationsByUser(app.store.state.auth.user.id);
+        async asyncData({ app, store }) {
+            const publications = await Api.getPublicationsByUser(store.state.auth.usuario.id);
 
-                for (let i = 0; i < publications.length; i++) {
-                    const publication = publications[i];
+            for (let i = 0; i < publications.length; i++) {
+                const publication = publications[i];
 
-                    app.store.dispatch('publications/addPublication', publication);
-                }
+                app.store.dispatch('publications/addPublication', publication);
             }
         },
         computed: {

@@ -30,8 +30,8 @@ class ApiClient {
         return this._makeCall('publications');
     }
 
-    getPublicationsByUser(user_id) {
-        return this._makeCall('publications', { user_id });
+    getPublicationsByUser(id) {
+        return this._makeCall('publications/user/' + id);
     }
 }
 

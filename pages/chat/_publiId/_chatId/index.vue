@@ -22,9 +22,9 @@
     export default {
         layout: 'chatInterface',
         middleware: ['mustBeLogged'],
-        async asyncData({ app, route }) {
+        async asyncData({ app, route, store }) {
             if (process.server) {
-                const publications = await Api.getPublicationsByUser(app.store.state.auth.user.id);
+                const publications = await Api.getPublicationsByUser(store.state.auth.usuario.id);
 
                 for (let i = 0; i < publications.length; i++) {
                     const publication = publications[i];

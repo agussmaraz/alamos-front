@@ -8,7 +8,7 @@
                 <h2>{{ publication.title }}</h2>
                 <p>{{ date }}</p>
             </div>
-            <p class="chat__conversation__text">{{ last_message.from }}: {{ last_message.text }}</p>
+            <p class="chat__conversation__text">{{ last_message.from_user.first_name + ' ' + last_message.from_user.last_name }}: {{ last_message.text }}</p>
         </div>
     </div>
 </template>

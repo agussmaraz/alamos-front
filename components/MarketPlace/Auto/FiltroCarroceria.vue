@@ -1,30 +1,30 @@
 <template>
     <section>
-        <h3 class="font-bold mb-3">Carrocerías populares</h3>
-        <article class="flex flex-wrap">
-            <div class="w-1/2 mb-4">
+        <h3 class="font-bold mb-4">Carrocerías populares</h3>
+        <article class="flex flex-wrap justify-around">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconSedan />
-                <p class="uppercase">Seda</p>
+                <p class="uppercase p-marca mt-1">Seda</p>
             </div>
-            <div class="w-1/2 mb-4">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconHatchback />
-                <p class="uppercase">Hatchback</p>
+                <p class="uppercase p-marca mt-1">Hatchback</p>
             </div>
-            <div class="w-1/2 mb-4">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconWagon />
-                <p class="uppercase">Wagon</p>
+                <p class="uppercase p-marca mt-1">Wagon</p>
             </div>
-            <div class="w-1/2 mb-4">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconPick />
-                <p class="uppercase">Pick up</p>
+                <p class="uppercase p-marca mt-1">Pick up</p>
             </div>
-            <div class="w-1/2 mb-4">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconCoupe />
-                <p class="uppercase">Coupe</p>
+                <p class="uppercase p-marca mt-1">Coupe</p>
             </div>
-            <div class="w-1/2 mb-4">
+            <div class="w-2/5 mb-5 flex justify-center items-center flex-col">
                 <IconConvertible />
-                <p class="uppercase">Convertible</p>
+                <p class="uppercase p-marca mt-1">Convertible</p>
             </div>
         </article>
         <h3 class="font-bold my-3">Carrocerías por clase de vehículo</h3>
@@ -78,7 +78,7 @@
         color: #353535;
     }
     section {
-        width: 60%;
+        width: 66%;
     }
     ul {
         width: 230px;
@@ -86,6 +86,9 @@
         height: 200px;
         border: solid #c4c4c4 1px;
         border-radius: 8px;
+    }
+    .p-marca {
+        color: #8e8e8e;
     }
     li:nth-child(2n + 1) {
         background-color: #f4f3f5;

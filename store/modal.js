@@ -9,6 +9,7 @@ export const state = () => {
             ordenar: false,
             versus: false,
             multipleVersus: false,
+            seleccionFiltro: false,
         },
     };
 };

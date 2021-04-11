@@ -298,7 +298,8 @@
         background-color: white;
         height: 120px;
         padding: 10px;
-        bottom: 0px;
+        bottom: -5px;
+        position: fixed;
         width: 100%;
     }
     hr {

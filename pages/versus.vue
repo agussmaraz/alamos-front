@@ -14,9 +14,21 @@
             <article class="article-nav" :class="comparacion.length > 0 ? 'article-nav-data' : null">
                 <article class="relative article-versus mt-4">
                     <article v-if="comparacion.length > 0" class="container-versus">
-                        <section v-for="index in 3" :key="index" class="flex items-center justify-between">
+                        <section v-for="index in 3" :key="index" class="flex items-center justify-between relative">
                             <div class="mx-4">
                                 <img :src="comparacion[index - 1].img" alt="auto" class="auto-elegido" />
+                                <article class="div-linea rounded-tl-md rounded-tr-md absolute flex items-center flex-col">
+                                    <section class="w-full relative"></section>
+                                    <div>
+                                        <p class="p-linea">{{ comparacion[index - 1].linea }}</p>
+                                        <p class="p-linea font-semibold">
+                                            {{ comparacion[index - 1].marca }}
+                                        </p>
+                                    </div>
+                                </article>
+                                <div class="bg-rojo rounded-bl-md rounded-br-md h-10 absolute bottom-0 div-mensaje">
+                                    <p class="font-bold p-mensaje">Enviar mensaje</p>
+                                </div>
                             </div>
                         </section>
                     </article>
@@ -136,23 +148,90 @@
                         {{ auto[2].caja }}
                     </div>
                 </article>
+                <div v-if="comparacion.length > 0" class="caja-flex mt-8">
+                    <h4>Cilindraje</h4>
+                    <hr class="hr8" />
+                </div>
+                <article v-if="comparacion.length > 0" class="flex justify-between items-center caja-datos">
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[0].cilindraje }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[1].cilindraje }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[2].cilindraje }}
+                    </div>
+                </article>
                 <div v-if="comparacion == 0" class="caja-flex mt-8">
                     <h4>Cilindraje (cc)</h4>
                     <hr class="hr8" />
                 </div>
 
-                <div v-if="comparacion == 0" class="caja-flex mt-8">
+                <div v-if="comparacion.length > 0" class="caja-flex mt-8">
                     <h4>Transmisión</h4>
                     <hr class="hr9" />
                 </div>
+                <article v-if="comparacion.length > 0" class="flex justify-between items-center caja-datos">
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[0].transmision }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[1].transmision }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[2].transmision }}
+                    </div>
+                </article>
+                <div v-if="comparacion.length > 0" class="caja-flex mt-8">
+                    <h4>Dirección</h4>
+                    <hr class="hr9" />
+                </div>
+                <article v-if="comparacion.length > 0" class="flex justify-between items-center caja-datos">
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[0].direccion }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[1].direccion }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[2].direccion }}
+                    </div>
+                </article>
+                <div v-if="comparacion.length > 0" class="caja-flex mt-8">
+                    <h4>Combustible</h4>
+                    <hr class="hr9" />
+                </div>
+                <article v-if="comparacion.length > 0" class="flex justify-between items-center caja-datos">
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[0].combustible }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[1].combustible }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[2].combustible }}
+                    </div>
+                </article>
                 <div v-if="comparacion == 0" class="caja-flex mt-8">
                     <h4>Potencia</h4>
                     <hr class="hr2" />
                 </div>
-                <div v-if="comparacion == 0" class="caja-flex mt-8">
+                <div v-if="comparacion.length > 0" class="caja-flex mt-8">
                     <h4>Cap. Pasajeros</h4>
                     <hr class="hr8" />
                 </div>
+                <article v-if="comparacion.length > 0" class="flex justify-between items-center caja-datos">
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[0].pasajeros }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[1].pasajeros }}
+                    </div>
+                    <div class="ml-4 font-bold" style="width: 50%">
+                        {{ auto[2].pasajeros }}
+                    </div>
+                </article>
                 <div v-if="comparacion == 0" class="caja-flex mt-8">
                     <h4>Número de ejes</h4>
                     <hr class="hr8" />
@@ -194,6 +273,11 @@
                         marca: 'Subaru',
                         precio: '72.000.000',
                         km: '18.000',
+                        cilindraje: 'Automática',
+                        transmision: '4X4',
+                        direccion: 'Hidráulica',
+                        combustible: 'Gasolina',
+                        pasajeros: 5,
                         lugar: 'Bogotá D.C',
                         caja: 'Automática',
                         placa: 1,
@@ -208,6 +292,11 @@
                         marca: 'Subaru',
                         precio: '72.000.000',
                         km: '18.000',
+                        cilindraje: 'Automática',
+                        transmision: '4X4',
+                        direccion: 'Hidráulica',
+                        combustible: 'Gasolina',
+                        pasajeros: 5,
                         lugar: 'Bogotá D.C',
                         caja: 'Automática',
                         placa: 5,
@@ -222,6 +311,11 @@
                         marca: 'Subaru',
                         precio: '72.000.000',
                         km: '18.000',
+                        cilindraje: 'Automática',
+                        transmision: '4X4',
+                        direccion: 'Hidráulica',
+                        combustible: 'Gasolina',
+                        pasajeros: 5,
                         lugar: 'Bogotá D.C',
                         caja: 'Automática',
                         placa: 6,
@@ -249,6 +343,26 @@
 </script>
 
 <style scoped>
+    .p-linea {
+        color: white;
+    }
+    .div-linea {
+        background-color: black;
+        opacity: 0.5;
+        bottom: 0px;
+        width: 143px;
+    }
+    .p-mensaje {
+        color: white;
+    }
+    .div-mensaje {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 143px;
+        bottom: -40px;
+        right: 16px;
+    }
     .auto-elegido {
         width: 143px;
         height: 134px;
@@ -339,7 +453,7 @@
     }
     .article-nav-data {
         background-color: white;
-        width: 120%;
+        width: 128%;
         position: sticky;
         position: -webkit-sticky;
         top: 0; /* required */
@@ -348,6 +462,8 @@
         /* padding-top: 260px; */
         padding-top: 20px;
         width: 120%;
+        height: 500px;
+        overflow: scroll;
     }
     h4 {
         color: #bebebe;

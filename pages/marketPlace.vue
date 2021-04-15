@@ -13,7 +13,7 @@
                     <IconCampana class="w-6 h-6 icon-campana" />
                 </nav>
                 <article class="flex justify-between article-filter">
-                    <div class="button-filter">
+                    <div class="button-filter" @click="openModal({ modal: 'filtroOrdenar' })">
                         <IconOrder />
                         <p class="font-bold p-filter">Ordenar</p>
                     </div>
@@ -172,6 +172,10 @@
             <!-- <article class="modal z-10" @click="closeModal({ modal: 'multiVersus' })"></article> -->
             <MultiVersus class="consejos-modal absolute z-20" />
         </section>
+        <section v-if="filtroOrdenar" class="absolute inset-0 flex justify-center">
+            <article class="modal z-10" @click="closeModal({ modal: 'filtroOrdenar' })"></article>
+            <FilterOrder class="consejos-modal absolute z-20" />
+        </section>
         <MPFiltro v-if="filters" :showFilter="showFilter" class="top-0 z-20" />
     </main>
 </template>
@@ -243,6 +247,7 @@
         computed: {
             ...mapState({
                 multiVersus: (state) => state.modal.modal.multipleVersus,
+                filtroOrdenar: (state) => state.modal.modal.filtroOrdenar,
             }),
         },
         methods: {
@@ -251,6 +256,7 @@
             },
             ...mapActions({
                 openModal: 'modal/openModal',
+                closeModal: 'modal/closeModal',
                 setVersus: 'versus/setVersus',
             }),
             setComparacion(data) {
@@ -276,6 +282,20 @@
 </script>
 
 <style scoped>
+    .modal {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        height: 100%;
+    }
+    .consejos-modal {
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 8px;
+        padding: 17px;
+        top: 209px;
+        width: 70%;
+    }
     .section-modal {
         bottom: 0;
         right: 0;

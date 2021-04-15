@@ -21,7 +21,7 @@
                 <IconChat class="w-6 h-6" />
                 Chats
             </nuxt-link>
-            <nuxt-link class="li" to="/tienda-virtual">
+            <nuxt-link class="li" to="/marketPlace">
                 <IconMarket class="w-6 h-6" />
                 Marketplace
             </nuxt-link>

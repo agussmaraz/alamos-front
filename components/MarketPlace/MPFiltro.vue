@@ -1,8 +1,11 @@
 <template>
     <section class="caja-padre w-full fixed">
         <header class="p-3 z-20 relative">
-            <div @click="openModal({ modal: 'seleccionFiltro' })">
+            <div class="flex items-center" @click="openModal({ modal: 'seleccionFiltro' })">
                 <h1 class="font-bold">Categoria:</h1>
+                <div class="elegido ml-3">
+                    {{ filter }}
+                </div>
             </div>
             <IconCampanaSearch class="icon-campana w-8 h-8" />
             <div @click="showFilter(false)">
@@ -52,6 +55,17 @@
 </script>
 
 <style scoped>
+    .elegido {
+        width: 110px;
+        height: 40px;
+        background: #376ca1;
+        border-radius: 30px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.3;
+    }
     .li-seleccionado {
         background-color: #eb7083;
         color: white;

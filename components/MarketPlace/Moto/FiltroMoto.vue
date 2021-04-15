@@ -118,7 +118,7 @@
         background-color: #f7f7f7;
         height: 100vh;
         overflow: scroll;
-        padding-top: 50px;
+        padding-top: 60px;
         padding-bottom: 67px;
     }
     li {

@@ -10,6 +10,7 @@ export const state = () => {
             versus: false,
             multipleVersus: false,
             seleccionFiltro: false,
+            filtroOrdenar: false,
         },
     };
 };

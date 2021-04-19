@@ -21,5 +21,11 @@ module.exports = {
         // 'vue/no-v-html': 'off',
         'vue/prop-name-casing': 'off',
         'vue/attribute-hyphenation': 'off',
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto',
+            },
+        ],
     },
 };

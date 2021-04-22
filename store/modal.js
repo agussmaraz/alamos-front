@@ -11,6 +11,13 @@ export const state = () => {
             multipleVersus: false,
             seleccionFiltro: false,
             filtroOrdenar: false,
+            editEmail: false,
+            editUbicacion: false,
+            editCelular: false,
+            editTelefono: false,
+            editContraseña: false,
+            editEliminar: false,
+            editHour: false,
         },
     };
 };

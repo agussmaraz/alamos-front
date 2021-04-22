@@ -8,8 +8,12 @@
                         <span class="text-sm parrafo">Ingresa un correo electrónico válido para registrarte en </span>
                         <span class="text-sm"> Álamos. </span>
                     </div>
+                    <div class="hidden md:block">
+                        <p>Hola, estoy escondido</p>
+                    </div>
                 </div>
             </div>
+            <IconVolante1 />
         </article>
         <section class="w-full">
             <article class="relative mt-10">

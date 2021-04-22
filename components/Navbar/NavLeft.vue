@@ -9,23 +9,23 @@
             <div class="div-caja py-3 pl-4">
                 <IconUserOff v-if="!esta_logueado" />
                 <IconUsuario v-if="esta_logueado" class="w-16 h-16" />
-                <p v-if="user && user.first_name" class="font-bold">Bienvenido, {{ user.first_name }}.</p>
-                <p v-if="user && user.business_name" class="font-bold">Bienvenido, {{ user.business_name }}.</p>
+                <p v-if="user && user.role === 10 && user.first_name" class="font-bold">¡Hola, {{ user.first_name }}!</p>
+                <p v-if="user && user.role === 20 && user.business_name" class="font-bold">¡Hola, {{ user.business_name }}!</p>
             </div>
             <ul class="space-y-6 mt-4">
-                <li class="flex items-center pl-4 mt-2">
+                <nuxt-link to="/home" class="flex items-center pl-4 mt-2">
                     <IconHome class="w-5 h-4" />
                     <p class="ml-4">Inicio</p>
-                </li>
+                </nuxt-link>
                 <li class="flex items-center pl-4">
                     <IconBuscar1 class="w-5 h-4" />
                     <p class="ml-4">Buscar</p>
                 </li>
                 <hr v-if="esta_logueado" />
-                <li v-if="esta_logueado" class="flex items-center pl-4">
+                <nuxt-link v-if="esta_logueado" to="/usuario" class="flex items-center pl-4">
                     <IconUserMenu class="w-5 h-4" />
                     <p class="ml-4">Mi cuenta</p>
-                </li>
+                </nuxt-link>
                 <li v-if="esta_logueado" class="flex items-center pl-4">
                     <IconUserMenu class="w-5 h-4" />
                     <p class="ml-4">Mis anuncios</p>

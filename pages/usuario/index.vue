@@ -43,20 +43,13 @@
                 </div>
                 <IconArrow2 class="arrow w-5 h-5" />
             </li>
-            <li class="item">
-                <div class="flex items-center">
-                    <IconCampanaSearch class="mr-2" />
-                    Alertas de busqueda
-                </div>
-                <IconArrow2 class="arrow w-5 h-5" />
-            </li>
-            <li class="item">
+            <nuxt-link to="/usuario/privacidad" class="item">
                 <div class="flex items-center">
                     <IconPrivacidad class="mr-2" />
                     Privacidad
                 </div>
                 <IconArrow2 class="arrow w-5 h-5" />
-            </li>
+            </nuxt-link>
             <li class="item">
                 <div class="flex items-center">
                     <IconLogout class="mr-2" />

@@ -60,7 +60,6 @@
     .contenido {
         width: 1300px;
         margin: auto;
-        margin-left: 120px;
     }
     .columnas {
         width: 300px;

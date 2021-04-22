@@ -2,6 +2,9 @@
     <main>
         <section class="desktop">
             <div><Header /></div>
+            <transition name="slide-fade">
+                <component :is="componente_actual" class="component" />
+            </transition>
             <div><Body /></div>
             <div><Footer /></div>
         </section>
@@ -39,14 +42,67 @@
 </template>
 
 <script>
-    import Header from '~/components/Desktop/Header';
-    import Body from '~/components/Desktop/Body';
-    import Footer from '~/components/Desktop/footer';
+    import { mapActions } from 'vuex';
     export default {
         name: 'PageOne',
-        Header,
-        Body,
-        Footer,
+        components: {
+            DatosEmpresa1: () => import('@/components/Register/empresa/datosEmpresa1'),
+            DatosEmpresa2: () => import('@/components/Register/empresa/datosEmpresa2'),
+            DatosEmpresa3: () => import('@/components/Register/empresa/datosEmpresa3'),
+            // DatosEmpresa4: () => import('@/components/Register/empresa/datosEmpresa4'),
+            DatosEmpresa5: () => import('@/components/Register/empresa/datosEmpresa5'),
+            DatosEmpresa6: () => import('@/components/Register/empresa/datosEmpresa6'),
+            DatosEmpresa7: () => import('@/components/Register/empresa/datosEmpresa7'),
+            DatosEmpresa8: () => import('@/components/Register/empresa/datosEmpresa8'),
+            DatosEmpresa9: () => import('@/components/Register/empresa/datosEmpresa9'),
+        },
+        data() {
+            return {
+                componente_actual: 'DatosEmpresa1',
+            };
+        },
+        methods: {
+            ...mapActions({
+                register: 'empresa/register',
+                setError: 'empresa/setError',
+                validateComponente1: 'empresa/validateComponente1',
+                validateComponente2: 'empresa/validateComponente2',
+                validateComponente3: 'empresa/validateComponente3',
+                validateComponente4: 'empresa/validateComponente4',
+                validateComponente5: 'empresa/validateComponente5',
+            }),
+            async changePage() {
+                if (this.componente_actual === 'DatosEmpresa1') {
+                    const validaComponente1 = await this.validateComponente1();
+                    if (validaComponente1) {
+                        this.componente_actual = 'DatosEmpresa2';
+                    }
+                } else if (this.componente_actual === 'DatosEmpresa2') {
+                    const validaComponente2 = await this.validateComponente2();
+                    if (validaComponente2) {
+                        this.componente_actual = 'DatosEmpresa5';
+                    }
+                } else if (this.componente_actual === 'DatosEmpresa5') {
+                    const validaComponente3 = await this.validateComponente3();
+                    if (validaComponente3) {
+                        this.componente_actual = 'DatosEmpresa6';
+                    }
+                } else if (this.componente_actual === 'DatosEmpresa6') {
+                    const validaComponente4 = await this.validateComponente4();
+                    if (validaComponente4) {
+                        this.componente_actual = 'DatosEmpresa7';
+                    }
+                } else if (this.componente_actual === 'DatosEmpresa7') {
+                    const validaComponente5 = await this.validateComponente5();
+                    if (validaComponente5) {
+                        this.componente_actual = 'DatosEmpresa8';
+                    }
+                } else if (this.componente_actual === 'DatosEmpresa8') {
+                    this.componente_actual = 'DatosEmpresa3';
+                    this.register(this.user);
+                }
+            },
+        },
     };
 </script>
 
@@ -74,5 +130,15 @@
     }
     a {
         color: white;
+    }
+    .component {
+        width: 400px;
+        position: absolute;
+        top: 120px;
+        left: 200px;
+        padding: 32px;
+        border: solid gray 1px;
+        background-color: white;
+        border-radius: 8px;
     }
 </style>

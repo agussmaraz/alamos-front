@@ -1,14 +1,14 @@
 <template>
     <main>
-        <section class="desktop">
-            <div><Header /></div>
+        <section class="desktop sm:hidden lg:block">
+            <div><HeaderDesktop /></div>
             <transition name="slide-fade">
                 <component :is="componente_actual" class="component" />
             </transition>
-            <div><Body /></div>
-            <div><Footer /></div>
+            <div><BodyDesktop /></div>
+            <div><FooterDesktop /></div>
         </section>
-        <section class="flex flex-col items-center text-center lg:hidden">
+        <section class="flex flex-col items-center text-center sm:block lg:hidden">
             <aside class="w-full flex justify-start my-4 ml-2">
                 <nuxt-link to="/">
                     <IconArrow class="icon" />

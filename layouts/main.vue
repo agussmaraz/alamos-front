@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Nav class="fixed w-full" />
-        <div class="pt-16 pb-16 w-full">
+        <Nav class="fixed w-full md:hidden" />
+        <div class="pt-16 pb-16 w-full md:pt-0 md:pb-0">
             <Nuxt />
         </div>
-        <Footer class="w-full" />
+        <Footer class="w-full md:hidden" />
     </div>
 </template>
 

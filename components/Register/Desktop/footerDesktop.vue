@@ -91,7 +91,7 @@
         height: auto;
         font-family: Montserrat;
         color: white;
-        font-size: 14px;
+        font-size: 18px;
     }
     .footerC a {
         text-decoration: none;

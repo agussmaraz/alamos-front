@@ -40,25 +40,21 @@
         padding-left: 430px;
         font-family: Montserrat;
         position: relative;
+        font-size: 18px;
     }
     h1 {
-        font-size: 35px;
+        font-size: 40px;
     }
     article {
         padding-top: 2rem;
-        width: 400px;
+        width: 550px;
         height: auto;
+        font-weight: bold;
     }
     .logoAlamos {
         margin-left: 80px;
         top: 20px;
     }
-    /* .fondoRegister {
-        width: 1520px;
-        margin-left: -100px;
-        position: relative;
-        top: -120px;
-    } */
     .caja-img {
         height: 600px;
     }

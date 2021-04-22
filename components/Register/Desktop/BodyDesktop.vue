@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h2 class="font-bold text-center pt-12 text-gris">VIVE UNA MEJOR EXPERIENCIA</h2>
-        <article class="contenido flex grid grid-cols-3 justify-around text-gris">
+    <div class="padre">
+        <h2 class="font-bold text-center pt-14 text-gris">VIVE UNA MEJOR EXPERIENCIA</h2>
+        <article class="contenido flex grid grid-cols-3 justify-between text-gris">
             <section class="columnas text-center">
-                <div class="imagenes">
+                <div class="imagenes flex justify-between">
                     <IconCandado />
                 </div>
                 <h3 class="font-bold">Compra y vende seguros</h3>
@@ -15,11 +15,11 @@
                 </div>
             </section>
             <section class="columnas text-center">
-                <div class="imagenes">
+                <div class="imagenes flex justify-between">
                     <IconBrujula />
                 </div>
                 <h3 class="textoGuia font-bold">Guía en el proceso</h3>
-                <div class="contenidoIconos2 text-gris">
+                <div class="contenidoIconos text-gris">
                     <span>Te guiamos durante el proceso de</span>
                     <span>compraventa y te damos las</span>
                     <span>herramientas necesarias para una</span>
@@ -27,7 +27,7 @@
                 </div>
             </section>
             <section class="columnas text-center">
-                <div class="imagenes">
+                <div class="imagenes flex justify-between">
                     <IconAqui />
                 </div>
                 <h3 class="font-bold">Todo en un solo lugar</h3>
@@ -43,26 +43,30 @@
 </template>
 
 <style scoped>
+    .padre {
+        width: auto;
+        height: auto;
+        padding-top: 100px;
+    }
     div {
         width: auto;
         height: auto;
-        margin-top: 200px;
         font-family: Montserrat;
+        font-size: 20px;
     }
     h3 {
         font-size: 27px;
-        width: 400px;
-        margin-left: -50px;
+        width: 102%;
     }
     h2 {
-        font-size: 25px;
+        font-size: 35px;
     }
     .contenido {
         width: 1300px;
         margin: auto;
     }
     .columnas {
-        width: 300px;
+        width: 80%;
     }
     section {
         color: #353535;
@@ -70,13 +74,10 @@
     .imagenes {
         padding-top: 40px;
         padding-bottom: 30px;
-        padding-left: 120px;
+        padding-left: 132px;
         margin-top: 30px;
     }
     .contenidoIconos {
-        margin-top: 30px;
-    }
-    .contenidoIconos2 {
         margin-top: 30px;
     }
 </style>

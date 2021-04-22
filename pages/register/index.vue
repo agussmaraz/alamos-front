@@ -1,12 +1,12 @@
 <template>
     <main>
-        <section class="desktop">
+        <section class="desktop hidden md:block">
             <div><Header /></div>
             <transition name="slide-fade">
                 <component :is="componente_actual" class="component" />
             </transition>
             <div><Body /></div>
-            <div><Footer /></div>
+            <div><FooterDesktop /></div>
         </section>
         <section class="flex flex-col items-center text-center lg:hidden">
             <aside class="w-full flex justify-start my-4 ml-2">

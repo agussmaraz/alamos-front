@@ -1,10 +1,16 @@
 <template>
     <main>
-        <section class="desktop sm:hidden lg:block">
+        <section class="desktop hidden lg:block">
             <div><HeaderDesktop /></div>
-            <transition name="slide-fade">
-                <component :is="componente_actual" class="component" />
-            </transition>
+            <div class="component">
+                <transition name="slide-fade">
+                    <component :is="componente_actual" class="" />
+                </transition>
+                <button class="bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
+                    <p>Siguiente</p>
+                    <p>></p>
+                </button>
+            </div>
             <div><BodyDesktop /></div>
             <div><FooterDesktop /></div>
         </section>
@@ -130,6 +136,10 @@
     }
     a {
         color: white;
+    }
+    button {
+        color: white;
+        width: 300px;
     }
     .component {
         width: 400px;

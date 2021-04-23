@@ -1,6 +1,6 @@
 <template>
     <section>
-        <section class="Dektop">
+        <section class="Dektop hidden md:block">
             <HeaderDHome />
         </section>
         <section class="md:hidden">

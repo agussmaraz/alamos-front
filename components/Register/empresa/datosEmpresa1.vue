@@ -1,7 +1,8 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <span class="flex text-rojo text-2xl mt-4 header text-center"> Ingresa tu email corporativo </span>
-        <article>
+        <h1 class="hidden lg:block font-semibold">Regístrate</h1>
+        <span class="flex text-rojo text-2xl mt-4 header text-center lg:hidden"> Ingresa tu email corporativo </span>
+        <article class="lg:hidden">
             <div class="div-parrafo">
                 <div class="mb-4">
                     <div class="mb-3">
@@ -13,7 +14,6 @@
                     </div>
                 </div>
             </div>
-            <IconVolante1 />
         </article>
         <section class="w-full">
             <article class="relative mt-10">

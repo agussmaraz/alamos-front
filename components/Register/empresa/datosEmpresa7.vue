@@ -1,7 +1,9 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <IconPassword class="w-24 mt-6" />
-        <span class="flex text-2xl mt-10 header text-center text-rojo"> Ingresa una constraseña </span>
+        <IconPassword class="w-24" />
+        <!-- Margen del IconPassword "mt-6" -->
+        <span class="header flex text-2xl mt-10 header text-center text-rojo lg:text-3xl text-center lg:font-semibold"> Ingresa una constraseña </span>
+        <FlechaAtras />
         <div class="parrafo text-sm div-parrafo text-left">
             <p>Condiciones:</p>
             <ul class="text-sm">
@@ -17,7 +19,7 @@
                     ref="password"
                     :value="data.contraseña"
                     :type="show_password ? 'text' : 'password'"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
                     :class="{
                         inputError: errores.contraseña && errores.contraseña.error,
                     }"
@@ -31,7 +33,7 @@
                     <IconOjoCerrado v-else class="w-6 h-6 icon-ojo" />
                 </div>
                 <div class="div-label absolute px-2" :class="active === 'password' || data.password != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('password')">Contraseña</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('password')">Contraseña</label>
                 </div>
             </article>
             <article class="relative my-12">
@@ -39,7 +41,7 @@
                     ref="password"
                     :value="data.repetirContraseña"
                     :type="show_repeatPassword ? 'text' : 'password'"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
                     :class="{
                         inputError: errores.repetirContraseña && errores.repetirContraseña.error,
                     }"
@@ -54,10 +56,11 @@
                     <IconOjoCerrado v-else class="w-6 h-6 icon-ojo" />
                 </div>
                 <div class="div-label absolute px-2" :class="active === 'repeatPassword' || data.repeatPassword != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('repeatPassword')">Repetir contraseña</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('repeatPassword')">Repetir contraseña</label>
                 </div>
             </article>
         </section>
+        <TienesCuenta />
     </section>
 </template>
 
@@ -178,5 +181,17 @@
     }
     .div-pass {
         background-color: #fef49c;
+    }
+    @media (min-width: 1200px) {
+        .div-label {
+            left: 10%;
+        }
+        .moveLabel {
+            margin-top: 0%;
+        }
+        .header {
+            color: black;
+            margin-top: -19%;
+        }
     }
 </style>

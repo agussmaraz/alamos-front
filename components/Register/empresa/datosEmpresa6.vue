@@ -1,12 +1,12 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <span class="flex text-rojo text-2xl mt-4 header text-center"> Dirección de la empresa </span>
+        <span class="header flex text-2xl mt-4 sm:text-rojo lg:text-3xl text-center lg:font-semibold"> Dirección de la empresa </span>
         <section class="w-full">
             <article class="relative mt-20">
                 <input
                     :value="data.direccion"
                     type="text"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
                     :class="{ inputError: errores.direccion && errores.direccion.error }"
                     @click="activate('direccion')"
                     @focus="activate('direccion')"
@@ -15,22 +15,30 @@
                 <IconError v-if="errores.direccion" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'direccion' || data.direccion != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('direccion')">Dirección</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('direccion')">Dirección</label>
                 </div>
             </article>
             <article class="relative my-12">
-                <input :value="data.ciudad" type="text" class="border border-rojo rounded-md w-64 h-12 outline-none pl-4" :class="{ inputError: errores.ciudad && errores.ciudad.error }" @click="activate('ciudad')" @focus="activate('ciudad')" @input="(event) => inputValue(event, 'ciudad')" />
+                <input
+                    :value="data.ciudad"
+                    type="text"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
+                    :class="{ inputError: errores.ciudad && errores.ciudad.error }"
+                    @click="activate('ciudad')"
+                    @focus="activate('ciudad')"
+                    @input="(event) => inputValue(event, 'ciudad')"
+                />
                 <IconError v-if="errores.ciudad" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'ciudad' || data.ciudad != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('ciudad')">Ciudad</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('ciudad')">Ciudad</label>
                 </div>
             </article>
             <article class="relative my-12">
                 <input
                     :value="data.localidad"
                     type="text"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
                     :class="{ inputError: errores.localidad && errores.localidad.error }"
                     @click="activate('localidad')"
                     @focus="activate('localidad')"
@@ -39,10 +47,11 @@
                 <IconError v-if="errores.localidad" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'localidad' || data.localidad != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('localidad')">Localidad</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('localidad')">Localidad</label>
                 </div>
             </article>
         </section>
+        <TienesCuenta />
     </section>
 </template>
 
@@ -137,5 +146,16 @@
     .activateButton {
         background-color: #ed1a3b;
         color: white;
+    }
+    @media (min-width: 1200px) {
+        .div-label {
+            left: 10%;
+        }
+        .moveLabel {
+            margin-top: 0%;
+        }
+        .header {
+            color: black;
+        }
     }
 </style>

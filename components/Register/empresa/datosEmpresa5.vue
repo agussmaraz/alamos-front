@@ -1,24 +1,43 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <span class="flex text-rojo text-2xl mt-4 header text-center"> Teléfono de contacto </span>
+        <span class="lg:hidden flex text-rojo text-2xl mt-4 header text-center"> Teléfono de contacto </span>
+        <span class="header text-2xl mt-4 lg:text-3xl text-center lg:font-semibold"> Datos de Contacto</span>
+        <FlechaAtras />
         <section class="w-full">
-            <article class="relative mt-20">
-                <input :value="data.telefono" type="text" class="border border-rojo rounded-md h-12 outline-none pl-4" :class="{ inputError: errores.telefono && errores.telefono.error }" @click="activate('telefono')" @focus="activate('telefono')" @input="(event) => inputValue(event, 'telefono')" />
+            <article class="relative mt-20 lg:mt-12">
+                <input
+                    :value="data.telefono"
+                    type="text"
+                    class="border border-rojo rounded-md h-12 outline-none pl-4 border-gris"
+                    :class="{ inputError: errores.telefono && errores.telefono.error }"
+                    @click="activate('telefono')"
+                    @focus="activate('telefono')"
+                    @input="(event) => inputValue(event, 'telefono')"
+                />
                 <IconError v-if="errores.telefono" class="w-6 h-6 absolute icono-error" />
 
-                <div class="div-label absolute px-2" :class="active === 'telefono' || data.telefono != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('telefono')">Teléfono fijo</label>
+                <div class="div-label absolute px-2 lg:px-0" :class="active === 'telefono' || data.telefono != '' ? 'moveLabel' : false">
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('telefono')">Teléfono fijo</label>
                 </div>
             </article>
-            <article class="relative mt-10">
-                <input :value="data.celular" type="text" class="border border-rojo rounded-md h-12 outline-none pl-4" :class="{ inputError: errores.celular && errores.celular.error }" @click="activate('celular')" @focus="activate('celular')" @input="(event) => inputValue(event, 'celular')" />
+            <article class="relative mt-10 lg:pb-12">
+                <input
+                    :value="data.celular"
+                    type="text"
+                    class="border border-rojo rounded-md h-12 outline-none pl-4 border-gris"
+                    :class="{ inputError: errores.celular && errores.celular.error }"
+                    @click="activate('celular')"
+                    @focus="activate('celular')"
+                    @input="(event) => inputValue(event, 'celular')"
+                />
                 <IconError v-if="errores.celular" class="w-6 h-6 absolute icono-error" />
 
-                <div class="div-label absolute px-2" :class="active === 'celular' || data.celular != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('celular')">Celular</label>
+                <div class="div-label absolute px-2 lg:px-0" :class="active === 'celular' || data.celular != '' ? 'moveLabel' : false">
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('celular')">Celular</label>
                 </div>
             </article>
         </section>
+        <TienesCuenta />
     </section>
 </template>
 
@@ -92,5 +111,14 @@
     }
     input {
         width: 300px;
+    }
+    .header {
+        padding-right: 10%;
+        color: black;
+    }
+    @media (min-width: 1200px) {
+        .div-label {
+            left: 10%;
+        }
     }
 </style>

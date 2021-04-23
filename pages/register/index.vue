@@ -6,7 +6,7 @@
                 <transition name="slide-fade">
                     <component :is="componente_actual" class="" />
                 </transition>
-                <button class="bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
+                <button class="caja bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
                     <p>Siguiente</p>
                     <p>></p>
                 </button>
@@ -114,7 +114,6 @@
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-
     .icon {
         fill: #ed1a3b;
     }
@@ -150,5 +149,14 @@
         border: solid gray 1px;
         background-color: white;
         border-radius: 8px;
+    }
+    @media (min-width: 1200px) {
+        .component {
+            width: 500px;
+            left: 150px;
+        }
+        .caja {
+            margin-top: 5%;
+        }
     }
 </style>

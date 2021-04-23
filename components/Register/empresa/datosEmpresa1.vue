@@ -1,6 +1,11 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <h1 class="hidden lg:block font-semibold">Regístrate</h1>
+        <h1 class="hidden sm:block sm:font-semibold lg:block lg:font-semibold lg:text-left lg:w-full lg:text-4xl lg:pl-4">Regístrate</h1>
+        <form class="forms hidden lg:block flex flex-col">
+            <p class="contenidoP lg:font-semibold"><input class="input1 text-base lg:font-semibold" type="radio" name="particular" value="soy-particular" /> Soy Particular</p>
+            <br />
+            <p class="contenidoP1 lg:font-semibold"><input class="input2 text-base lg:font-semibold" type="radio" name="empresa" value="soy-empresa" /> Soy Empresa</p>
+        </form>
         <span class="flex text-rojo text-2xl mt-4 header text-center lg:hidden"> Ingresa tu email corporativo </span>
         <article class="lg:hidden">
             <div class="div-parrafo">
@@ -17,17 +22,25 @@
         </article>
         <section class="w-full">
             <article class="relative mt-10">
-                <input :value="data.correo" type="email" class="border border-rojo rounded-md h-12 outline-none pl-4 relative" :class="{ inputError: errores.correo && errores.correo.error }" @click="activate('correo')" @focus="activate('correo')" @input="(event) => inputValue(event, 'correo')" />
+                <input
+                    :value="data.correo"
+                    type="email"
+                    class="correo border border-rojo lg:border lg:border-gris rounded-md h-12 outline-none pl-4 relative"
+                    :class="{ inputError: errores.correo && errores.correo.error }"
+                    @click="activate('correo')"
+                    @focus="activate('correo')"
+                    @input="(event) => inputValue(event, 'correo')"
+                />
                 <IconError v-if="errores.correo" class="w-6 h-6 absolute icono-error" />
                 <div class="div-label absolute px-2" :class="active === 'correo' || data.correo != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('correo')">Correo electrónico</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg" @click="activate('correo')">Correo electrónico</label>
                 </div>
             </article>
             <article class="relative mt-10">
                 <input
                     :value="data.confirmacion"
                     type="email"
-                    class="border border-rojo rounded-md h-12 outline-none pl-4"
+                    class="correo border border-rojo lg:border lg:border-gris rounded-md h-12 outline-none pl-4"
                     :class="{
                         inputError: errores.confirmacion && errores.confirmacion.error,
                     }"
@@ -38,11 +51,12 @@
                 <IconError v-if="errores.confirmacion" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'confirmar' || data.confirmacion != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('confirmar')">Confirmar correo</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg" @click="activate('confirmar')">Confirmar correo</label>
                 </div>
                 <!-- {{ errores.correo.error.length }} -->
             </article>
         </section>
+        <TienesCuenta />
     </section>
 </template>
 
@@ -115,7 +129,42 @@
         margin-top: -21px;
         transition: margin-top 300ms;
     }
-    input {
+    .correo {
         width: 300px;
+    }
+    .input1 {
+        font-family: Montserrat;
+        padding-bottom: 10px;
+    }
+    .input2 {
+        font-family: Montserrat;
+    }
+    .forms {
+        width: 100%;
+    }
+    .contenidoP {
+        padding-top: 15%;
+        padding-right: 45%;
+        font-size: 1.3rem;
+        color: gray;
+    }
+    .contenidoP input {
+        width: 15px;
+        height: 15px;
+    }
+    .contenidoP1 {
+        padding-right: 45%;
+        padding-bottom: 5%;
+        font-size: 1.3rem;
+        color: gray;
+    }
+    .contenidoP1 input {
+        width: 15px;
+        height: 15px;
+    }
+    @media (min-width: 1200px) {
+        .div-label {
+            left: 10%;
+        }
     }
 </style>

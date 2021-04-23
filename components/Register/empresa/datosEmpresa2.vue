@@ -1,14 +1,15 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <span class="flex text-rojo text-2xl mt-4 header text-center"> Datos de la empresa </span>
-        <p class="parrafo div-parrafo text-sm">A continuación, solicitaremos los datos de tu empresa para hacer tus facturas cuando generes cargos:</p>
-        <section class="w-full">
+        <span class="header flex text-2xl mt-4 text-rojo lg:text-3xl text-center lg:font-semibold"> Datos de la empresa </span>
+        <FlechaAtras />
+        <p class="sm:block lg:hidden parrafo div-parrafo text-sm">A continuación, solicitaremos los datos de tu empresa para hacer tus facturas cuando generes cargos:</p>
+        <section class="padre w-full">
             <article class="relative mt-4">
                 <input
                     :value="data.nombre"
                     type="text"
                     :class="{ inputError: errores.nombre && errores.nombre.error }"
-                    class="border border-rojo rounded-md w-64 h-12 outline-none pl-4"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
                     @click="activate('nombre_empresa')"
                     @focus="activate('nombre_empresa')"
                     @input="(event) => inputValue(event, 'nombre')"
@@ -16,26 +17,35 @@
                 <IconError v-if="errores.nombre" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'nombre_empresa' || data.nombre_empresa != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('nombre_empresa')">Nombre de la empresa</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('nombre_empresa')">Nombre de la empresa</label>
                 </div>
             </article>
             <article class="relative my-12">
-                <input :value="data.razon" type="text" class="border border-rojo rounded-md w-64 h-12 outline-none pl-4" :class="{ inputError: errores.razon && errores.razon.error }" @click="activate('razon_social')" @focus="activate('razon_social')" @input="(event) => inputValue(event, 'razon')" />
+                <input
+                    :value="data.razon"
+                    type="text"
+                    class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4"
+                    :class="{ inputError: errores.razon && errores.razon.error }"
+                    @click="activate('razon_social')"
+                    @focus="activate('razon_social')"
+                    @input="(event) => inputValue(event, 'razon')"
+                />
                 <IconError v-if="errores.razon" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'razon_social' || data.razon_social != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('razon_social')">Razón social</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('razon_social')">Razón social</label>
                 </div>
             </article>
             <article class="relative my-12">
-                <input :value="data.nit" type="text" class="border border-rojo rounded-md w-64 h-12 outline-none pl-4" :class="{ inputError: errores.nit && errores.nit.error }" @click="activate('nit')" @focus="activate('nit')" @input="(event) => inputValue(event, 'nit')" />
+                <input :value="data.nit" type="text" class="border border-rojo lg:border-gris rounded-md w-64 h-12 outline-none pl-4" :class="{ inputError: errores.nit && errores.nit.error }" @click="activate('nit')" @focus="activate('nit')" @input="(event) => inputValue(event, 'nit')" />
                 <IconError v-if="errores.nit" class="w-6 h-6 absolute icono-error" />
 
                 <div class="div-label absolute px-2" :class="active === 'nit' || data.nit != '' ? 'moveLabel' : false">
-                    <label for="" class="text-rojo text-xs" @click="activate('nit')">NIT</label>
+                    <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('nit')">NIT</label>
                 </div>
             </article>
         </section>
+        <TienesCuenta />
     </section>
 </template>
 
@@ -127,5 +137,12 @@
     .activateButton {
         background-color: #ed1a3b;
         color: white;
+    }
+    .header {
+        padding-right: 10%;
+        color: black;
+    }
+    .padre {
+        padding-top: 5%;
     }
 </style>

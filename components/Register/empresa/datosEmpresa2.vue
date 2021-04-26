@@ -143,6 +143,7 @@
     @media (min-width: 1200px) {
         .header {
             padding-right: 10%;
+            color: black;
         }
     }
 </style>

@@ -1,8 +1,9 @@
 <template>
     <section class="flex flex-col items-center text-center">
         <span class="header flex text-2xl mt-4 text-rojo lg:text-3xl text-center lg:font-semibold"> Dirección de la empresa </span>
+        <Flecha-atras class="flecha" />
         <section class="w-full">
-            <article class="relative mt-20">
+            <article class="top relative mt-20">
                 <input
                     :value="data.direccion"
                     type="text"
@@ -56,7 +57,9 @@
 
 <script>
     import { mapActions, mapState } from 'vuex';
+    import FlechaAtras from '../Desktop/FlechaAtras.vue';
     export default {
+        components: { FlechaAtras },
         name: 'DatosEmpresa6',
         data() {
             return {
@@ -149,6 +152,12 @@
     @media (min-width: 1200px) {
         .header {
             color: black;
+        }
+        .flecha {
+            padding-right: 7%;
+        }
+        .top {
+            margin-top: 5%;
         }
     }
 </style>

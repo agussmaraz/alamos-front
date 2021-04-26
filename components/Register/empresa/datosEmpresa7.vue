@@ -3,7 +3,7 @@
         <IconPassword class="w-24" />
         <!-- Margen del IconPassword "mt-6" -->
         <span class="header flex text-2xl mt-10 header text-center text-rojo lg:text-3xl text-center lg:font-semibold"> Ingresa una constraseña </span>
-        <FlechaAtras />
+        <FlechaAtras class="flecha" />
         <div class="parrafo text-sm div-parrafo text-left">
             <p>Condiciones:</p>
             <ul class="texto text-sm">
@@ -197,6 +197,9 @@
         }
         .div-parrafo {
             margin-top: 0%;
+        }
+        .flecha {
+            padding-right: 10%;
         }
     }
 </style>

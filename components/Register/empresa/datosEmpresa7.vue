@@ -6,7 +6,7 @@
         <FlechaAtras />
         <div class="parrafo text-sm div-parrafo text-left">
             <p>Condiciones:</p>
-            <ul class="text-sm">
+            <ul class="texto text-sm">
                 <li>- Debe tener mínimo 8 caracteres</li>
                 <li>- Debe tener máximo 10 caracteres</li>
                 <li>- Debe contener por lo menos una mayúscula</li>
@@ -36,7 +36,7 @@
                     <label for="" class="text-rojo text-xs lg:text-gris lg:text-lg lg:font-semibold" @click="activate('password')">Contraseña</label>
                 </div>
             </article>
-            <article class="relative my-12">
+            <article class="repetir-C relative my-12">
                 <input
                     ref="password"
                     :value="data.repetirContraseña"
@@ -60,7 +60,6 @@
                 </div>
             </article>
         </section>
-        <TienesCuenta />
     </section>
 </template>
 
@@ -183,15 +182,21 @@
         background-color: #fef49c;
     }
     @media (min-width: 1200px) {
-        .div-label {
-            left: 10%;
-        }
-        .moveLabel {
-            margin-top: 0%;
-        }
         .header {
             color: black;
             margin-top: -19%;
+        }
+        .parrafo {
+            font-size: 22px;
+        }
+        .texto {
+            font-size: 18px;
+        }
+        .repetir-C {
+            margin-bottom: 0%;
+        }
+        .div-parrafo {
+            margin-top: 0%;
         }
     }
 </style>

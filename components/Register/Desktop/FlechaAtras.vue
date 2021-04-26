@@ -2,14 +2,16 @@
     <section>
         <div class="contenido hidden lg:flex lg:flex-row lg:block lg:color-blue lg:pt-4">
             <div class="arrow lg:text-2xl">&#10140;</div>
-            <p class="arrowP">Atras</p>
+            <a class="arrowP" href="">Atrás</a>
         </div>
     </section>
 </template>
 
 <style scoped>
     .contenido {
-        padding-right: 230px;
+        width: 300px;
+        padding-bottom: 10%;
+        padding-right: 23%;
     }
     .arrow {
         color: #376ca1;

@@ -1,14 +1,14 @@
 <template>
     <section class="flex flex-col items-center text-center">
         <span class="lg:hidden flex text-rojo text-2xl mt-4 header text-center"> Teléfono de contacto </span>
-        <span class="header text-2xl mt-4 lg:text-3xl text-center lg:font-semibold"> Datos de Contacto</span>
+        <span class="header text-2xl text-rojo mt-4 lg:text-3xl text-center lg:font-semibold"> Datos de Contacto</span>
         <FlechaAtras />
         <section class="w-full">
             <article class="relative mt-20 lg:mt-12">
                 <input
                     :value="data.telefono"
                     type="text"
-                    class="border border-rojo rounded-md h-12 outline-none pl-4 border-gris"
+                    class="border border-rojo rounded-md h-12 outline-none pl-4 lg:border-gris"
                     :class="{ inputError: errores.telefono && errores.telefono.error }"
                     @click="activate('telefono')"
                     @focus="activate('telefono')"
@@ -24,7 +24,7 @@
                 <input
                     :value="data.celular"
                     type="text"
-                    class="border border-rojo rounded-md h-12 outline-none pl-4 border-gris"
+                    class="border border-rojo rounded-md h-12 outline-none pl-4 lg:border-gris"
                     :class="{ inputError: errores.celular && errores.celular.error }"
                     @click="activate('celular')"
                     @focus="activate('celular')"
@@ -37,7 +37,6 @@
                 </div>
             </article>
         </section>
-        <TienesCuenta />
     </section>
 </template>
 
@@ -112,13 +111,13 @@
     input {
         width: 300px;
     }
-    .header {
-        padding-right: 10%;
-        color: black;
-    }
     @media (min-width: 1200px) {
+        .header {
+            padding-right: 17%;
+            color: black;
+        }
         .div-label {
-            left: 10%;
+            left: 17%;
         }
     }
 </style>

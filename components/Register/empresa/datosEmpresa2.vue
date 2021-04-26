@@ -45,7 +45,6 @@
                 </div>
             </article>
         </section>
-        <TienesCuenta />
     </section>
 </template>
 
@@ -138,11 +137,12 @@
         background-color: #ed1a3b;
         color: white;
     }
-    .header {
-        padding-right: 10%;
-        color: black;
-    }
     .padre {
-        padding-top: 5%;
+        height: 250px;
+    }
+    @media (min-width: 1200px) {
+        .header {
+            padding-right: 10%;
+        }
     }
 </style>

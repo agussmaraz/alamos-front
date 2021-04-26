@@ -20,7 +20,7 @@
                 </div>
             </div>
         </article>
-        <section class="w-full">
+        <section class="validar-Correo w-full">
             <article class="relative mt-10">
                 <input
                     :value="data.correo"
@@ -56,7 +56,6 @@
                 <!-- {{ errores.correo.error.length }} -->
             </article>
         </section>
-        <TienesCuenta />
     </section>
 </template>
 
@@ -142,29 +141,30 @@
     .forms {
         width: 100%;
     }
-    .contenidoP {
-        padding-top: 15%;
-        padding-right: 45%;
-        font-size: 1.3rem;
-        color: gray;
-    }
-    .contenidoP input {
-        width: 15px;
-        height: 15px;
-    }
-    .contenidoP1 {
-        padding-right: 45%;
-        padding-bottom: 5%;
-        font-size: 1.3rem;
-        color: gray;
-    }
-    .contenidoP1 input {
-        width: 15px;
-        height: 15px;
-    }
     @media (min-width: 1200px) {
         .div-label {
-            left: 10%;
+            left: 16%;
+        }
+        .contenidoP {
+            padding-top: 15%;
+            padding-right: 47%;
+            font-size: 1.3rem;
+            color: gray;
+            width: 103%;
+        }
+        .contenidoP input {
+            width: 15px;
+            height: 15px;
+        }
+        .contenidoP1 {
+            padding-right: 47%;
+            padding-bottom: 5%;
+            font-size: 1.3rem;
+            color: gray;
+        }
+        .contenidoP1 input {
+            width: 15px;
+            height: 15px;
         }
     }
 </style>

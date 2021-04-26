@@ -8,7 +8,7 @@
         <transition name="slide-fade">
             <component :is="componente_actual" class="component" />
         </transition>
-        <article class="flex justify-center">
+        <article class="contenedor flex justify-center pb-2">
             <div class="bg-rojo w-48 py-2 text-center rounded-3xl shadow-lg mr-2">
                 <button class="a" @click="changePage">Siguiente</button>
             </div>
@@ -118,9 +118,6 @@
         outline: none;
         width: 100%;
     }
-    .component {
-        height: 560px;
-    }
     .slide-fade-enter-active {
         transition: all 0.3s ease;
     }
@@ -128,5 +125,9 @@
     .slide-fade-enter {
         transform: translateX(10px);
         opacity: 0;
+    }
+    .contenedor {
+        padding-top: 10%;
+        padding-bottom: 15px;
     }
 </style>

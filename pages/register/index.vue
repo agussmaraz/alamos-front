@@ -7,9 +7,10 @@
                     <component :is="componente_actual" class="" />
                 </transition>
                 <button class="caja bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
-                    <p>Siguiente</p>
-                    <p>></p>
+                    <p class="siguiente">Siguiente</p>
+                    <p class="vector">></p>
                 </button>
+                <TienesCuenta />
             </div>
             <div><BodyDesktop /></div>
             <div><FooterDesktop /></div>
@@ -36,10 +37,10 @@
                 </div>
             </article>
             <article class="flex mt-4">
-                <div class="bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto mr-2">
+                <div class="empresa-part bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto mr-2">
                     <nuxt-link class="a" to="/register/empresa">Soy empresa</nuxt-link>
                 </div>
-                <div class="bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto ml-2">
+                <div class="empresa-part bg-rojo w-32 py-2 text-center rounded-lg shadow-lg m-auto ml-2">
                     <nuxt-link class="a" to="/register/particular">Soy particular</nuxt-link>
                 </div>
             </article>
@@ -152,11 +153,22 @@
     }
     @media (min-width: 1200px) {
         .component {
-            width: 500px;
             left: 150px;
         }
         .caja {
-            margin-top: 5%;
+            margin-top: 10%;
+            outline: none;
+        }
+        .empresa-part {
+            color: #353535;
+        }
+        .siguiente {
+            padding-left: 3%;
+        }
+        .vector {
+            padding-left: 61%;
+            font-size: 34px;
+            padding-bottom: 2%;
         }
     }
 </style>

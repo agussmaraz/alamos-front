@@ -1,6 +1,6 @@
 <template>
     <section class="flex flex-col items-center text-center">
-        <span class="header flex text-2xl mt-4 sm:text-rojo lg:text-3xl text-center lg:font-semibold"> Dirección de la empresa </span>
+        <span class="header flex text-2xl mt-4 text-rojo lg:text-3xl text-center lg:font-semibold"> Dirección de la empresa </span>
         <section class="w-full">
             <article class="relative mt-20">
                 <input
@@ -51,7 +51,6 @@
                 </div>
             </article>
         </section>
-        <TienesCuenta />
     </section>
 </template>
 
@@ -148,12 +147,6 @@
         color: white;
     }
     @media (min-width: 1200px) {
-        .div-label {
-            left: 10%;
-        }
-        .moveLabel {
-            margin-top: 0%;
-        }
         .header {
             color: black;
         }

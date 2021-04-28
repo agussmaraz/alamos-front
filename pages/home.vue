@@ -1,9 +1,10 @@
 <template>
     <section>
-        <section class="Dektop hidden md:block">
+        <section class="Dektop hidden lg:block">
             <HeaderDHome />
+            <EncuentraVehiculo />
         </section>
-        <section class="md:hidden">
+        <section class="lg:hidden">
             <Acciones />
             <h1>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, rem! Maiores amet reprehenderit aspernatur quasi voluptas veritatis quis quaerat a possimus beatae quidem hic numquam rerum eum provident, culpa quia fuga enim molestiae? Veniam vel, facere, veritatis necessitatibus,

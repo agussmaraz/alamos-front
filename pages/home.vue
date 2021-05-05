@@ -3,6 +3,8 @@
         <section class="Dektop hidden lg:block">
             <HeaderDHome />
             <EncuentraVehiculo />
+            <BodyDHome />
+            <FooterDHome />
         </section>
         <section class="lg:hidden">
             <Acciones />

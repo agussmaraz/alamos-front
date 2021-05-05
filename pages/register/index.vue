@@ -6,14 +6,18 @@
                 <transition name="slide-fade">
                     <component :is="componente_actual" class="" />
                 </transition>
-                <button class="caja bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
+                <button :class="componente_actual === 'DatosEmpresa8' ? 'hidden' : false" class="caja bg-rojo mx-auto rounded-md flex items-center h-12 justify-between mt-4 uppercase px-2" @click="changePage">
                     <p class="siguiente">Siguiente</p>
                     <p class="vector">></p>
+                </button>
+                <button :class="componente_actual === 'DatosEmpresa8' ? 'block' : 'hidden'" class="btnTyC bg-rojo mx-auto rounded-md flex items-center font-bold justify-between mt-8 uppercase px-6" @click="changePage">
+                    <p class="TyC">Acepto los Terminos</p>
+                    <p class="vectorTyC">></p>
                 </button>
                 <TienesCuenta />
             </div>
             <div><BodyDesktop /></div>
-            <div><FooterDesktop /></div>
+            <div><FooterDHome /></div>
         </section>
         <section class="flex flex-col items-center text-center sm:block lg:hidden">
             <aside class="w-full flex justify-start my-4 ml-2">
@@ -152,6 +156,16 @@
         border-radius: 8px;
     }
     @media (min-width: 1200px) {
+        .vectorTyC {
+            font-size: 34px;
+            padding-bottom: 2%;
+        }
+        .btnTyC {
+            color: white;
+            width: 330px;
+            height: 62px;
+            font-size: 18px;
+        }
         .component {
             left: 150px;
         }

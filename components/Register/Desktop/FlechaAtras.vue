@@ -2,7 +2,7 @@
     <section>
         <div class="contenido hidden lg:flex lg:flex-row lg:block lg:color-blue lg:pt-4">
             <div class="arrow lg:text-2xl">&#10140;</div>
-            <a class="arrowP" href="">Atrás</a>
+            <a class="arrowP pt-0.5 pl-2" href="">Atrás</a>
         </div>
     </section>
 </template>

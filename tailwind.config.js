@@ -8,7 +8,9 @@ module.exports = {
     theme: {
         colors: {
             rojo: '#ed1a3b',
-            gris: '#585757' 
+            gris: '#585757',
+            fondo: '#E5E5E5',
+            blanco: '#ffffff'
         },
     },
     variants: {},

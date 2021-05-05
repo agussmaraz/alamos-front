@@ -2,7 +2,7 @@
     <section class="flex flex-col items-center text-center">
         <span class="header flex text-2xl mt-4 sm:text-rojo lg:text-3xl text-center lg:font-semibold"> Términos y Condiciones </span>
         <FlechaAtras class="flecha" />
-        <div class="terminosC">
+        <div class="terminosC text-center pb-4">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed magnam accusamus molestiae vitae saepe omnis quibusdam sint nam tenetur facere quam est pariatur incidunt, laboriosam ab. Rerum impedit quibusdam adipisci! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure,
                 unde. Eum repellat cum sed maiores commodi unde eius hic accusantium optio ipsam facilis, assumenda in, consectetur nesciunt facere perspiciatis perferendis? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum assumenda dolores alias? Aliquam minus repellendus ut.
@@ -45,6 +45,9 @@
             },
             activeButton(id) {
                 this.buttonGenero = id;
+            },
+            TyC() {
+                this.terminos_C = !this.terminos_C;
             },
         },
     };
